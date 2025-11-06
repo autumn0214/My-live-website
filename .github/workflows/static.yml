@@ -53,8 +53,4 @@ jobs:
     - name: Run Gemini CLI
       env:
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-      run: |
-        # Your commands that use the Gemini API key
-        # For example, if using the google-github-actions/run-gemini-cli action:
-        # gemini /review
-        
+      run:       
