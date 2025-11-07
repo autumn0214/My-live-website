@@ -174,6 +174,9 @@
                 </nav>
 
                 <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+                    <a href="#page-login" class="text-base font-medium text-gray-700 hover:text-primary-teal transition duration-300 mr-4">
+                        Client Login
+                    </a>
                     <a href="#page-contact" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-lg shadow-lg text-base font-medium text-white bg-primary-teal hover:bg-secondary-orange transition duration-300 transform hover:scale-105">
                         Get Started
                     </a>
@@ -197,6 +200,7 @@
                 <a href="#page-matchmaker" onclick="toggleMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-secondary-orange">Matchmaker</a>
                 <a href="#page-residency" onclick="toggleMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-secondary-orange">Residency Info</a>
                 <a href="#page-about" onclick="toggleMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-secondary-orange">About Us</a>
+                <a href="#page-login" onclick="toggleMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-primary-teal">Client Login</a>
                 <a href="#page-contact" onclick="toggleMenu()" class="block w-full text-center px-4 py-2 rounded-lg text-base font-medium text-white bg-primary-teal hover:bg-secondary-orange transition duration-300 mt-2">Get Started</a>
             </div>
         </div>
@@ -240,7 +244,7 @@
                         Explore Costa Rica, Panama, & Belize
                     </p>
                     <p class="mt-4 max-w-3xl text-lg text-gray-500 lg:mx-auto">
-                        Click on any destination to get an instant, current brief covering essential residency requirements, cost of living estimates, and popular expat cities, **powered by the Gemini AI.**
+                        Click on any destination to view its dedicated guide covering essential residency requirements, cost of living estimates, and popular expat cities.
                     </p>
                 </div>
 
@@ -254,10 +258,10 @@
                             <p class="mt-3 text-gray-600">
                                 Known for its political stability, robust ecological tourism, and high quality of life. Ideal for nature lovers and families seeking "Pura Vida."
                             </p>
-                            <button onclick="generateRelocationBrief('Costa Rica')"
+                            <a href="#page-costarica"
                                 class="mt-4 text-secondary-orange font-semibold inline-flex items-center hover:underline focus:outline-none">
-                                Get an Instant Brief ✨ &rarr;
-                            </button>
+                                View Destination Guide &rarr;
+                            </a>
                         </div>
                     </div>
 
@@ -270,10 +274,10 @@
                             <p class="mt-3 text-gray-600">
                                 A global hub offering modern infrastructure, excellent tax incentives, and the famous 'Friendly Nations' visa for expats.
                             </p>
-                            <button onclick="generateRelocationBrief('Panama')"
+                            <a href="#page-panama"
                                 class="mt-4 text-secondary-orange font-semibold inline-flex items-center hover:underline focus:outline-none">
-                                Get an Instant Brief ✨ &rarr;
-                            </button>
+                                View Destination Guide &rarr;
+                            </a>
                         </div>
                     </div>
 
@@ -286,16 +290,136 @@
                             <p class="mt-3 text-gray-600">
                                 The only English-speaking country in Central America, offering Caribbean lifestyle, low-cost living, and simple residency requirements.
                             </p>
-                            <button onclick="generateRelocationBrief('Belize')"
+                            <a href="#page-belize"
                                 class="mt-4 text-secondary-orange font-semibold inline-flex items-center hover:underline focus:outline-none">
-                                Get an Instant Brief ✨ &rarr;
-                            </button>
+                                View Destination Guide &rarr;
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        
+
+        <section id="page-costarica" class="py-16 sm:py-24 bg-white border-t-8 border-primary-teal">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-base text-secondary-orange font-semibold tracking-wide uppercase">Destination Guide</h2>
+                    <p class="mt-2 text-4xl font-extrabold text-primary-teal sm:text-5xl">
+                        Pura Vida: Costa Rica
+                    </p>
+                </div>
+                <div class="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-10">
+                    <div class="lg:col-span-2 space-y-8">
+                        <h3 class="text-2xl font-bold text-dark-text border-b pb-2">Residency & Visa Pathways</h3>
+                        <p class="text-lg text-gray-700">Costa Rica is highly stable and welcoming to expats. The two most popular visa pathways are:</p>
+                        <ul class="list-disc ml-6 space-y-3 text-gray-700">
+                            <li>**Pensionado Visa (Retiree):** Requires a lifetime, fixed income of at least **$1,000 USD** per month. You cannot be employed as a worker, but you can own a business.</li>
+                            <li>**Rentista Visa (Passive Income):** Requires a commitment to deposit **$60,000 USD** into a Costa Rican bank (or show $2,500 USD monthly income for two years). This is ideal for those not yet retired.</li>
+                            <li>Both paths lead to permanent residency after three years.</li>
+                        </ul>
+
+                        <h3 class="text-2xl font-bold text-dark-text border-b pb-2 pt-6">Popular Expat Cities & Regions</h3>
+                        <div class="space-y-4">
+                            <p><strong>San José / Central Valley:</strong> The urban hub, offering the best healthcare, international schools, modern amenities, and cooler climates.</p>
+                            <p><strong>Tamarindo / Guanacaste (Pacific):</strong> Famous for its stunning beaches, surf culture, and a huge, active North American expat community. Hot and dry climate.</p>
+                            <p><strong>Dominical / Southern Pacific:</strong> Known for its lush rainforests, intense biodiversity, and a laid-back, eco-conscious lifestyle. Higher rainfall and more remote.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-primary-teal/10 p-6 rounded-xl shadow-lg">
+                        <h3 class="text-xl font-bold text-primary-teal mb-4">Cost of Living Estimate (Couple)</h3>
+                        <p class="text-4xl font-extrabold text-dark-text">$2,500 - $4,500 USD / month</p>
+                        <ul class="mt-4 space-y-2 text-sm text-gray-700">
+                            <li>**High End:** Living in a modern condo in Escazú or beachfront on the Gold Coast.</li>
+                            <li>**Low End:** Renting a local-style home (Tico-house) outside the major expat centers.</li>
+                            <li>**Note:** Prices for imported goods and gasoline can be high. Local produce and services are affordable.</li>
+                        </ul>
+                        <a href="#page-contact" class="mt-6 inline-block text-secondary-orange font-semibold hover:underline">Start your Costa Rica Move &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-panama" class="py-16 sm:py-24 bg-primary-teal/5 border-t-8 border-secondary-orange">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-base text-primary-teal font-semibold tracking-wide uppercase">Destination Guide</h2>
+                    <p class="mt-2 text-4xl font-extrabold text-secondary-orange sm:text-5xl">
+                        Global Hub: Panama
+                    </p>
+                </div>
+                <div class="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-10">
+                    <div class="lg:col-span-2 space-y-8">
+                        <h3 class="text-2xl font-bold text-dark-text border-b pb-2">Residency & Visa Pathways</h3>
+                        <p class="text-lg text-gray-700">Panama is famous for its tax-friendly environment and streamlined visas. The most popular paths are:</p>
+                        <ul class="list-disc ml-6 space-y-3 text-gray-700">
+                            <li>**Pensionado (Retiree) Visa:** Requires a lifetime monthly income of at least **$1,000 USD** (or $1,250 if applying with a spouse). Provides significant discounts on entertainment, travel, and medical services.</li>
+                            <li>**Friendly Nations Visa (Suspended/Modified):** Previously popular, this path has been frequently updated. We help clients navigate current investment or employment-based avenues that have replaced it.</li>
+                            <li>**Digital Nomad Visa:** A new temporary option for remote workers, requiring a minimum monthly income of $3,000 USD.</li>
+                        </ul>
+
+                        <h3 class="text-2xl font-bold text-dark-text border-b pb-2 pt-6">Popular Expat Cities & Regions</h3>
+                        <div class="space-y-4">
+                            <p><strong>Panama City:</strong> A vibrant, modern metropolitan hub with skyscrapers, excellent international banking, and world-class healthcare. Highest cost of living.</p>
+                            <p><strong>Boquete (Chiriquí Highlands):</strong> Located in the mountains, offering a mild, spring-like climate, lush greenery, and a very large, active retiree expat community.</p>
+                            <p><strong>Coronado / Pacific Beaches:</strong> A string of beach communities popular with expats, featuring gated communities, resorts, and a more relaxed lifestyle than the city.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-secondary-orange/10 p-6 rounded-xl shadow-lg">
+                        <h3 class="text-xl font-bold text-secondary-orange mb-4">Cost of Living Estimate (Couple)</h3>
+                        <p class="text-4xl font-extrabold text-dark-text">$2,200 - $4,000 USD / month</p>
+                        <ul class="mt-4 space-y-2 text-sm text-gray-700">
+                            <li>**High End:** Living downtown in Panama City, using the best private hospitals and dining out often.</li>
+                            <li>**Low End:** Living in smaller towns or outside the city core, relying more on local markets.</li>
+                            <li>**Tax Benefit:** Panama uses a territorial tax system, meaning income earned outside Panama is generally not taxed.</li>
+                        </ul>
+                        <a href="#page-contact" class="mt-6 inline-block text-primary-teal font-semibold hover:underline">Start your Panama Move &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-belize" class="py-16 sm:py-24 bg-white border-t-8 border-danger-red">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-base text-secondary-orange font-semibold tracking-wide uppercase">Destination Guide</h2>
+                    <p class="mt-2 text-4xl font-extrabold text-danger-red sm:text-5xl">
+                        Caribbean Charm: Belize
+                    </p>
+                </div>
+                <div class="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-10">
+                    <div class="lg:col-span-2 space-y-8">
+                        <h3 class="text-2xl font-bold text-dark-text border-b pb-2">Residency & Visa Pathways</h3>
+                        <p class="text-lg text-gray-700">Belize is unique as the only English-speaking country in Central America. Its visa program is simple:</p>
+                        <ul class="list-disc ml-6 space-y-3 text-gray-700">
+                            <li>**Qualified Retired Person (QRP) Program:** Requires applicants to be **45 years or older** and prove a minimum monthly income of **$2,000 USD** (or $24,000 annually) sourced from outside Belize.</li>
+                            <li>**Major Benefit:** QRPs are exempt from paying Belizean income tax on all foreign-sourced income and can import up to $15,000 worth of personal household goods and one vehicle duty-free.</li>
+                            <li>**Non-QRP Residency:** After one year of continuous legal stay, one can apply for permanent residency, but the QRP program is often more attractive for retirees.</li>
+                        </ul>
+
+                        <h3 class="text-2xl font-bold text-dark-text border-b pb-2 pt-6">Popular Expat Cities & Regions</h3>
+                        <div class="space-y-4">
+                            <p><strong>Ambergris Caye / San Pedro:</strong> The largest and most popular island destination, known for its diving, fishing, and large, active expat social scene. More expensive than the mainland.</p>
+                            <p><strong>Cayo District (San Ignacio):</strong> Inland region offering a lower cost of living, Maya ruins, rainforests, and farm-to-table living. Cooler than the coast.</p>
+                            <p><strong>Placencia:</strong> A peninsula with miles of beaches, offering a more relaxed, quieter coastal alternative to Ambergris Caye, with easy access to the mainland.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-danger-red/10 p-6 rounded-xl shadow-lg">
+                        <h3 class="text-xl font-bold text-danger-red mb-4">Cost of Living Estimate (Couple)</h3>
+                        <p class="text-4xl font-extrabold text-dark-text">$1,800 - $3,500 USD / month</p>
+                        <ul class="mt-4 space-y-2 text-sm text-gray-700">
+                            <li>**High End:** Renting on a Caye (island), including boat taxis and imported groceries.</li>
+                            <li>**Low End:** Living on the mainland in the Cayo District, focusing on local markets and products.</li>
+                            <li>**Language:** Since English is the official language, the transition is often smoother for North American expats.</li>
+                        </ul>
+                        <a href="#page-contact" class="mt-6 inline-block text-primary-teal font-semibold hover:underline">Start your Belize Move &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="page-packages" class="py-16 sm:py-24 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-base text-primary-teal font-semibold tracking-wide uppercase">Tailored Support</h2>
@@ -658,8 +782,42 @@
 
             </div>
         </section>
+        
+        <section id="page-login" class="py-16 sm:py-24 bg-primary-teal/5">
+            <div class="max-w-md mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-base text-secondary-orange font-semibold tracking-wide uppercase">Client Portal</h2>
+                <p class="mt-2 text-3xl font-extrabold text-dark-text sm:text-4xl">
+                    Access Your Relocation Hub
+                </p>
+                <p class="mt-4 text-lg text-gray-600">
+                    Track your shipment, view your personalized timeline, and communicate securely with your specialist.
+                </p>
 
-
+                <div class="mt-8 bg-white p-8 rounded-xl shadow-2xl text-left border border-primary-teal/20">
+                    <form action="#" method="POST" class="space-y-6">
+                        <div>
+                            <label for="login-email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                            <input type="email" name="login-email" id="login-email" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 focus:border-primary-teal focus:ring-primary-teal sm:text-sm">
+                        </div>
+                        <div>
+                            <label for="login-password" class="block text-sm font-medium text-gray-700">Password</label>
+                            <input type="password" name="login-password" id="login-password" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 focus:border-primary-teal focus:ring-primary-teal sm:text-sm">
+                        </div>
+                        <div class="pt-4">
+                            <button type="submit"
+                                class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-lg text-base font-medium text-white bg-secondary-orange hover:bg-primary-teal transition duration-300 transform hover:scale-105">
+                                Log In
+                            </button>
+                        </div>
+                        <div class="text-center">
+                            <a href="#" class="text-sm font-medium text-primary-teal hover:text-secondary-orange">Forgot Password?</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
         <section id="page-contact" class="py-16 sm:py-24 bg-gray-900 text-white">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-base text-secondary-orange font-semibold tracking-wide uppercase">Let's Connect</h2>
@@ -771,6 +929,9 @@
                         <a href="#page-matchmaker" class="text-base text-gray-300 hover:text-primary-teal">Matchmaker</a>
                     </div>
                     <div class="px-5 py-2">
+                        <a href="#page-login" class="text-base text-gray-300 hover:text-primary-teal">Client Login</a>
+                    </div>
+                    <div class="px-5 py-2">
                         <a href="#page-contact" class="text-base text-gray-300 hover:text-primary-teal">Contact</a>
                     </div>
                 </nav>
@@ -787,10 +948,12 @@
     
     <script> 
 
+        // AI constants are kept for the remaining Matchmaker functionality
         const GEMINI_API_KEY = "AIzaSyBcVrMeGBdU0TFPsi1u0TVjEa3ayGTB-3Y"; 
         const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
         const converter = new showdown.Converter();
-function markdownToHtml(markdownText) {
+
+        function markdownToHtml(markdownText) {
             return converter.makeHtml(markdownText);
         }
         
@@ -814,7 +977,7 @@ function markdownToHtml(markdownText) {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         }
-
+        
         async function fetchWithBackoff(url, options, maxRetries = 5) {
             for (let attempt = 0; attempt < maxRetries; attempt++) {
                 try {
@@ -840,40 +1003,8 @@ function markdownToHtml(markdownText) {
                 }
             }
         }
-        
-        async function generateRelocationBrief(country) {
-            showModal('Loading Brief...', '<p class="text-primary-teal text-center">Contacting Gemini AI for the latest information...</p><div class="flex justify-center mt-4"><div class="spinner"></div></div>');
-            
-            try {
-                const systemPrompt = `You are a relocation expert providing up-to-date, detailed relocation briefs. Generate a brief on ${country}. The brief MUST include the current minimum requirements for the most popular residency visa for this country (e.g., Pensionado, Rentista, or QRP), a list of 3 popular expat cities/areas and a brief reason for each, and a realistic estimate for the monthly cost of living for a couple (in USD). Format the response using detailed Markdown headings and lists. The information must be based on general knowledge and data; do not use external search/grounding.`;
-                const userQuery = `Generate the comprehensive relocation brief for ${country}.`;
 
-                const payload = {
-                    contents: [{ parts: [{ text: userQuery }] }],
-                    systemInstruction: {
-                        parts: [{ text: systemPrompt }]
-                    },
-                    config: {
-]                        temperature: 0.1 
-                    }
-                };
-
-                const result = await fetchWithBackoff(API_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-            
-                const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "Could not generate a brief. Please check your API key and connection.";
-                const htmlContent = markdownToHtml(text);
-                
-                showModal(`Brief for ${country}`, htmlContent);
-
-            } catch (error) {
-                console.error("Gemini API Error (Brief):", error);
-                showModal('Brief Error', `<p class="text-danger-red">A connection error occurred while generating the brief: ${error.message}. Please check the browser console for details and ensure your API key is correct.</p>`);
-            }
-        }
+        // generateRelocationBrief function has been removed as requested.
 
         async function generateRecommendation() {
             const form = document.getElementById('matchmaker-form');
@@ -961,4 +1092,4 @@ function markdownToHtml(markdownText) {
 
     </script>
 </body>
-</html>        
+</html>
