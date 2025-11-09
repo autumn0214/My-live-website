@@ -162,10 +162,36 @@
             <div class="flex justify-between items-center py-1 md:justify-start md:space-x-10">
                 <div class="flex justify-start lg:w-0 lg:flex-1">
                     <a href="#page-home" class="flex items-center transition duration-300">
-                        <span class="text-xl font-bold text-primary-teal">Autumn Point</span>
+                        <span class="text-xl font-bold text-primary-teal">Autumn Point Relocation</span>
                     </a>
                 </div>
 
+                <nav class="hidden md:flex items-center space-x-6">
+          <div class="relative group">
+            <button aria-expanded="false" id="destinations-button" class="inline-flex items-center text-base font-medium text-gray-700 hover:text-secondary-orange focus:outline-none">
+              Destinations
+              <svg class="ml-2 h-4 w-4 text-gray-500 group-hover:text-secondary-orange" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            <!-- Desktop dropdown (visible on hover/focus) -->
+            <div class="absolute left-0 mt-2 w-48 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 dropdown-panel transform -translate-y-1 pointer-events-none group-hover:pointer-events-auto"
+                 role="menu" aria-labelledby="destinations-button">
+              <a href="costarica.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50" role="menuitem">Costa Rica</a>
+              <a href="panama.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50" role="menuitem">Panama</a>
+              <a href="belize.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50" role="menuitem">Belize</a>
+            </div>
+          </div>
+
+          <a href="#page-packages" class="text-base font-medium text-gray-700 hover:text-secondary-orange">Packages</a>
+          <a href="#page-matchmaker" class="text-base font-medium text-gray-700 hover:text-secondary-orange">Matchmaker</a>
+          <a href="#page-residency" class="text-base font-medium text-gray-700 hover:text-secondary-orange">Residency Info</a>
+          <a href="#page-about" class="text-base font-medium text-gray-700 hover:text-secondary-orange">About Us</a>
+        
+                </nav>               
+                
+                
                 <nav class="hidden md:flex space-x-10">
                     <a href="#page-destinations" class="text-base font-medium text-gray-700 hover:text-secondary-orange transition duration-300">Destinations</a>
                     <a href="#page-packages" class="text-base font-medium text-gray-700 hover:text-secondary-orange transition duration-300">Packages</a>
