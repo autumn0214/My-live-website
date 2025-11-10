@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Matchmaker Questionnaire — Autumn Point Relocation</title>
+  <!-- copy any site CSS links here (Tailwind, fonts, site css) -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="antialiased">
+  <!-- Simple header: you can copy your full header from index.html if you prefer -->
+  <header class="py-4 px-6 border-b">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="text-lg font-bold text-primary-teal">Autumn Point Relocation</a>
+      <a href="index.html" class="text-sm text-gray-600 hover:text-secondary-orange">Back to Home</a>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 py-12">
+    <h1 class="text-3xl font-bold mb-6">Matchmaker Questionnaire</h1>
+
+    <!-- PASTE MATCHMAKER FORM HERE -->
+    <section id="page-matchmaker" class="py-16 sm:py-24 bg-primary-teal/5">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-base text-secondary-orange font-semibold tracking-wide uppercase">Personalized Recommendation</h2>
+                    <p class="mt-2 text-3xl font-extrabold text-dark-text sm:text-4xl">
+                        Find Your Perfect Home Match
+                    </p>
+                    <p class="mt-4 text-xl text-gray-600">
+                        Answer these 12 questions to find the Central American city that aligns with your lifestyle, budget, and priorities.
+                    </p>
+                </div>
+
+                <div class="mt-12 bg-white p-8 rounded-xl shadow-2xl border border-gray-100">
+                    <form id="matchmaker-form" onsubmit="event.preventDefault(); generateRecommendation();">
+                        
+                        <div class="mb-6 pb-4 border-b">
+                            <p class="text-lg font-semibold text-dark-text mb-3">1. Is a maximum monthly budget of $3,000 for all living expenses comfortable for you?</p>
+                            <div class="flex space-x-4">
+                                <input type="radio" id="q1_yes" name="q1_budget" value="Budget is a major constraint; prefer low cost of living (under $3k)" class="hidden radio-yes" required>
+                                <label for="q1_yes" class="radio-label">Yes</label>
+                                <input type="radio" id="q1_no" name="q1_budget" value="Budget is flexible; modern amenities are more important than low cost" class="hidden radio-no">
+                                <label for="q1_no" class="radio-label">No</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-6 pb-4 border-b">
+                            <p class="text-lg font-semibold text-dark-text mb-3">2. Do you prefer a modern city with high-speed internet, tall buildings, and international restaurants?</p>
+                            <div class="flex space-x-4">
+                                <input type="radio" id="q2_yes" name="q2_city" value="Prefers modern infrastructure and city amenities" class="hidden radio-yes" required>
+                                <label for="q2_yes" class="radio-label">Yes</label>
+                                <input type="radio" id="q2_no" name="q2_city" value="Prefers rustic, quiet, small-town atmosphere" class="hidden radio-no">
+                                <label for="q2_no" class="radio-label">No</label>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6 pb-4 border-b">
+                            <p class="text-lg font-semibold text-dark-text mb-3">3. Is it essential that the primary language is English?</p>
+                            <div class="flex space-x-4">
+                                <input type="radio" id="q3_yes" name="q3_language" value="English is essential; Spanish is not an option" class="hidden radio-yes" required>
+                                <label for="q3_yes" class="radio-label">Yes</label>
+                                <input type="radio" id="q3_no" name="q3_language" value="Spanish-speaking country is acceptable; willing to learn" class="hidden radio-no">
+                                <label for="q3_no" class="radio-label">No</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-6 pb-4 border-b">
+                            <p class="text-lg font-semibold text-dark-text mb-3">4. Do you want a mild, cooler climate (Mountain/Central Valley) over hot, tropical beaches?</p>
+                            <div class="flex space-x-4">
+                                <input type="radio" id="q4_yes" name="q4_weather" value="Prefers mild, cooler weather (highlands)" class="hidden radio-yes" required>
+                                <label for="q4_yes" class="radio-label">Yes</label>
+                                <input type="radio" id="q4_no" name="q4_weather" value="Prefers hot, humid weather (coastal/tropical)" class="hidden radio-no">
+                                <label for="q4_no" class="radio-label">No</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-6 pb-4 border-b">
+                            <p class="text-lg font-semibold text-dark-text mb-3">5. Is minimizing exposure to major hurricanes and political instability a top priority?</p>
+                            <div class="flex space-x-4">
+                                <input type="radio" id="q5_yes" name="q5_safety" value="Prioritizes stability and low hurricane risk" class="hidden radio-yes" required>
+                                <label for="q5_yes" class="radio-label">Yes</label>
+                                <input type="radio" id="q5_no" name="q5_safety" value="Willing to accept higher risk for unique opportunities/location" class="hidden radio-no">
+                                <label for="q5_no" class="radio-label">No</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-6 pb-4 border-b">
+                            <p class="text-lg font-semibold text-dark-text mb-3">6. Do you require immediate and easy access to high-quality, international-level private healthcare?</p>
+                            <div class="flex space-x-4">
+                                <input type="radio" id="q6_yes" name="q6_health" value="Requires excellent, easily accessible private healthcare" class="hidden radio-yes" required>
+                                <label for="q6_yes" class="radio-label">Yes</label>
+                                <input type="radio" id="q6_no" name="q6_health" value="Basic local care is sufficient, or willing to travel for specialty needs" class="hidden radio-no">
+                                <label for="q6_no" class="radio-label">No</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-6 pb-4 border-b">
+                            <p class="text-lg font-semibold text-dark-text mb-3">7. Are major tax incentives (especially for passive foreign income) a deciding factor?</p>
+                            <div class="flex space-x-4">
+                                <input type="radio" id="q7_yes" name="q7_taxes" value="Tax incentives are a major deciding factor" class="hidden radio-yes" required>
+                                <label for="q7_yes" class="radio-label">Yes</label>
+                                <input type="radio" id="q7_no" name="q7_taxes" value="Tax advantages are a bonus, but not the priority" class="hidden radio-no">
+                                <label for="q7_no" class="radio-label">No</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-6 pb-4 border-b">
+                            <p class="text-lg font-semibold text-dark-text mb-3">8. Do you need a major international airport with frequent, direct flights to North America?</p>
+                            <div class="flex space-x-4">
+                                <input type="radio" id="q8_yes" name="q8_travel" value="Requires major international airport hub" class="hidden radio-yes" required>
+                                <label for="q8_yes" class="radio-label">Yes</label>
+                                <input type="radio" id="q8_no" name="q8_travel" value="Remote airport access is acceptable" class="hidden radio-no">
+                                <label for="q8_no" class="radio-label">No</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-6 pb-4 border-b">
+                            <p class="text-lg font-semibold text-dark-text mb-3">9. Do you prefer a country with a specialized, straightforward visa pathway for retirees or remote workers?</p>
+                            <div class="flex space-x-4">
+                                <input type="radio" id="q9_yes" name="q9_visa" value="Prioritizes easy, established visa/residency paths (e.g., Pensionado or Digital Nomad)" class="hidden radio-yes" required>
+                                <label for="q9_yes" class="radio-label">Yes</label>
+                                <input type="radio" id="q9_no" name="q9_visa" value="Willing to navigate a slightly more complex residency process" class="hidden radio-no">
+                                <label for="q9_no" class="radio-label">No</label>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6 pb-4 border-b">
+                            <p class="text-lg font-semibold text-dark-text mb-3">10. Is an active, established, and large expat community essential for your social life?</p>
+                            <div class="flex space-x-4">
+                                <input type="radio" id="q10_yes" name="q10_community" value="Requires a large, established expat community" class="hidden radio-yes" required>
+                                <label for="q10_yes" class="radio-label">Yes</label>
+                                <input type="radio" id="q10_no" name="q10_community" value="Prefers a smaller, more integrated local community" class="hidden radio-no">
+                                <label for="q10_no" class="radio-label">No</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-6 pb-4 border-b">
+                            <p class="text-lg font-semibold text-dark-text mb-3">11. Are unique biodiversity, lush rainforests, and dedicated ecotourism resources a top priority?</p>
+                            <div class="flex space-x-4">
+                                <input type="radio" id="q11_yes" name="q11_nature" value="Prioritizes biodiversity, ecotourism, and lush nature" class="hidden radio-yes" required>
+                                <label for="q11_yes" class="radio-label">Yes</label>
+                                <input type="radio" id="q11_no" name="q11_nature" value="Prioritizes urban life or simple beach access over deep nature" class="hidden radio-no">
+                                <label for="q11_no" class="radio-label">No</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-6 pb-4 border-b">
+                            <p class="text-lg font-semibold text-dark-text mb-3">12. Do you strongly prefer the clear, calm waters of the Caribbean side over the Pacific Coast?</p>
+                            <div class="flex space-x-4">
+                                <input type="radio" id="q12_yes" name="q12_ocean" value="Strongly prefers Caribbean/Atlantic side for water activities" class="hidden radio-yes" required>
+                                <label for="q12_yes" class="radio-label">Yes</label>
+                                <input type="radio" id="q12_no" name="q12_ocean" value="Prefers Pacific side for surf/accessibility, or no strong preference" class="hidden radio-no">
+                                <label for="q12_no" class="radio-label">No</label>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 text-center">
+                            <button type="submit" id="submit-button"
+                                class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg shadow-xl text-white bg-secondary-orange hover:bg-primary-teal transition duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed">
+                                <span id="button-text">Find My Perfect Location!</span>
+                                <div id="spinner" class="spinner ml-3 hidden"></div>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
