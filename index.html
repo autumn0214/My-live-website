@@ -200,6 +200,56 @@
             
     </header>
 
+    
+    <script>
+  (function () {
+    const btn = document.getElementById('mobileMenuButton');
+    const panel = document.getElementById('mobileMenu');
+    const openIcon = document.getElementById('hamburgerOpen');
+    const closeIcon = document.getElementById('hamburgerClose');
+
+    if (!btn || !panel) return;
+
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      panel.classList.toggle('hidden');
+      openIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+
+      // keep focus management simple
+      if (!expanded) {
+        panel.setAttribute('aria-hidden', 'false');
+      } else {
+        panel.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    // close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const target = e.target;
+      if (!panel.classList.contains('hidden') && !panel.contains(target) && !btn.contains(target)) {
+        panel.classList.add('hidden');
+        openIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+        panel.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    // close on ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !panel.classList.contains('hidden')) {
+        panel.classList.add('hidden');
+        openIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+        panel.setAttribute('aria-hidden', 'true');
+        btn.focus();
+      }
+    });
+  })();
+</script>
     <main id="main-content">
 <section id="page-home" class="relative overflow-hidden pt-16 pb-16 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-28 flex items-center h-[60vh] md:h-[55vh] lg:h-[50vh] min-h-[360px]">          <div class="hero-video-container">
   <video id="hero-video-bg"
@@ -222,6 +272,7 @@
 </div>
             
 <script>
+    
   // debug helpers - shows errors in console and tries to play
   (function(){
     const v = document.getElementById('hero-video-bg');
@@ -230,6 +281,9 @@
     v.addEventListener('stalled', () => console.warn('video stalled'));
     v.addEventListener('suspend', () => console.warn('video suspend'));
     v.play().then(() => console.log('video play started')).catch(e => console.warn('autoplay prevented or play failed:', e));
+      
+      }
+    });
   })();
 </script>
 
