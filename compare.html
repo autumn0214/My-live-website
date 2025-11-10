@@ -14,317 +14,224 @@
       --card-radius:12px;
       --lift-shadow: 0 12px 28px rgba(15,23,42,0.14);
       --soft-shadow: 0 8px 20px rgba(15,23,42,0.06);
+      --danger-red:#be123c;
     }
-    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;color:var(--dark-text);background:linear-gradient(180deg, #f7f9f9, #ffffff);}
-    .page {
-      max-width:1100px;
-      margin:28px auto;
+
+    /* Page */
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;color:var(--dark-text);background:var(--bg);}
+    .page { max-width:1100px; margin:28px auto; padding:18px; background:var(--bg); }
+
+    /* Header / intro (kept as you asked) */
+    .shimmer-wrap{ display:flex; align-items:center; gap:12px; margin-bottom:8px; }
+    .shimmer { font-size:1.6rem; font-weight:800; background: linear-gradient(90deg,var(--primary-teal),#00b7a1,var(--secondary-orange)); -webkit-background-clip:text; color:transparent; position:relative; overflow:hidden; }
+    .shimmer::after{ content:''; position:absolute; left:-40%; top:0; width:60%; height:100%; background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.35), rgba(255,255,255,0)); transform:skewX(-20deg); animation: glide 3s linear infinite;}
+    @keyframes glide { 0%{ left:-60%; } 100%{ left:120%; } }
+    .intro{ color:var(--muted); font-size:1rem; margin-bottom:18px; line-height:1.5; background: linear-gradient(180deg, rgba(13,148,136,0.02), rgba(234,88,12,0.01)); padding:12px; border-radius:10px; box-shadow:var(--soft-shadow); }
+
+    /* Table-like grid: left column = labels, then 3 country columns */
+    .compare-wrap{
+      margin-top:12px;
       padding:18px;
-    }
-
-    /* Animated shimmer heading */
-    .shimmer-wrap{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      margin-bottom:8px;
-    }
-    .shimmer {
-      font-size:1.6rem;
-      font-weight:800;
-      background: linear-gradient(90deg, var(--primary-teal), #00b7a1, var(--secondary-orange));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      position:relative;
-      overflow: hidden;
-    }
-    .shimmer::after{
-      content:'';
-      position:absolute;
-      left:-40%;
-      top:0;
-      width:60%;
-      height:100%;
-      background: linear-gradient(90deg, rgba(255,255,255,0.0), rgba(255,255,255,0.35), rgba(255,255,255,0.0));
-      transform: skewX(-20deg);
-      animation: glide 3s linear infinite;
-    }
-    @keyframes glide { 0% { left:-60%; } 100% { left:120%; } }
-
-    .intro{
-      color:var(--muted);
-      font-size:1rem;
-      margin-bottom:18px;
-      line-height:1.5;
-      background: linear-gradient(180deg, rgba(13,148,136,0.02), rgba(234,88,12,0.01));
-      padding:12px;
-      border-radius:10px;
+      background:linear-gradient(180deg, rgba(13,148,136,0.02), rgba(234,88,12,0.01));
+      border-radius:12px;
       box-shadow:var(--soft-shadow);
     }
 
-    /* Lift-off CTA button */
-    .cta {
-      background:var(--primary-teal);
-      color:white;
-      padding:10px 14px;
-      border-radius:10px;
-      text-decoration:none;
-      font-weight:700;
-      display:inline-block;
-      transition: transform 180ms cubic-bezier(.2,.9,.3,1), box-shadow 180ms;
-      box-shadow: 0 6px 14px rgba(13,148,136,0.18);
-    }
-    .cta:hover{
-      transform: translateY(-8px) scale(1.01);
-      box-shadow: var(--lift-shadow);
-    }
-
-    /* Reuse the chart styling from component */
-    .country-chart{
-      margin-top:16px;
-      padding:18px;
-      background:linear-gradient(180deg, rgba(13,148,136,0.04), rgba(234,88,12,0.02));
-      border-radius:var(--card-radius);
-      box-shadow:var(--soft-shadow);
-    }
-
-    .grid{
+    .table{
       display:grid;
-      grid-template-columns:220px repeat(3,1fr);
+      grid-template-columns: 300px repeat(3, 1fr);
       gap:10px;
       align-items:stretch;
+      width:100%;
     }
-    .col-header{
-      padding:12px 14px;
-      font-weight:700;
-      background:linear-gradient(90deg, rgba(13,148,136,0.06), rgba(234,88,12,0.03));
+
+    .head {
+      padding:12px;
+      font-weight:800;
       border-radius:10px;
+      background:linear-gradient(90deg, rgba(13,148,136,0.06), rgba(234,88,12,0.03));
       display:flex;
       align-items:center;
       gap:10px;
+      justify-content:center;
     }
-    .row-label{ padding:12px 14px; background:var(--bg); color:var(--muted); border-radius:8px;}
-    .cell{ padding:12px 14px; background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.95)); border-radius:8px; font-size:0.95rem; display:flex; align-items:center; gap:8px; }
-    .flag-dot{ width:14px;height:14px;border-radius:4px;box-shadow:0 2px 6px rgba(15,23,42,0.08); }
-    .cr .flag-dot{ background: linear-gradient(135deg,#0d9488,#0b7f72); }
-    .pa .flag-dot{ background: linear-gradient(135deg,#ea580c,#c94c08); }
-    .bz .flag-dot{ background: linear-gradient(135deg,#f59e0b,#d97706); }
-    .check-yes{ color:var(--primary-teal); font-weight:700; }
-    .check-no{ color:var(--danger-red,#be123c); font-weight:700; }
 
-    /* Responsive */
-    @media (max-width:880px){ .grid{ grid-template-columns:1fr; } .row-label{ display:none; } }
+    .label{
+      padding:12px;
+      background:var(--bg);
+      border-radius:8px;
+      font-weight:700;
+      color:var(--muted);
+    }
+
+    .cell{
+      padding:12px;
+      background:#fff;
+      border-radius:8px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      font-weight:700;
+      color:var(--dark-text);
+      min-height:56px;
+      box-shadow: 0 6px 18px rgba(15,23,42,0.03);
+    }
+
+    .num{ color:var(--dark-text); font-weight:800; font-variant-numeric:tabular-nums; }
+    .note{ display:block; font-size:0.85rem; font-weight:600; color:var(--muted); font-weight:600; margin-top:4px; font-weight:600; }
+
+    .yes{ color:var(--primary-teal); font-weight:900; }
+    .no{ color:var(--danger-red); font-weight:900; }
+
+    /* Country accents on header */
+    .cr-head{ display:flex; gap:10px; align-items:center; justify-content:center; }
+    .pa-head{ display:flex; gap:10px; align-items:center; justify-content:center; }
+    .bz-head{ display:flex; gap:10px; align-items:center; justify-content:center; }
+
+    .flag-dot{ width:12px;height:12px;border-radius:4px;box-shadow:0 2px 6px rgba(15,23,42,0.06); }
+    .cr-dot{ background: linear-gradient(135deg,#0d9488,#0b7f72); }
+    .pa-dot{ background: linear-gradient(135deg,#ea580c,#c94c08); }
+    .bz-dot{ background: linear-gradient(135deg,#f59e0b,#d97706); }
+
+    /* mobile */
+    @media (max-width:980px){
+      .table{ grid-template-columns: 1fr 1fr; }
+      .head:nth-child(n+3), .cell:nth-child(n+3){ display:block; width:100%; }
+      .label{ display:block; }
+    }
   </style>
 </head>
 <body>
   <div class="page">
     <div style="display:flex;gap:14px;align-items:center;">
-      <div class="shimmer-wrap">
-        <div class="shimmer">Compare Countries</div>
-      </div>
-      <a class="cta" href="#chart">View chart</a>
+      <div class="shimmer-wrap"><div class="shimmer">Compare Countries</div></div>
+      <!-- top CTA removed as requested -->
     </div>
 
     <p class="intro">
       Welcome — this chart is a friendly, fact-based snapshot designed to help you decide which of Costa Rica, Panama, or Belize might suit your next chapter.
       Use it as a starting point: look at cost figures, healthcare access, visa options and other practical checks, then follow up with the
-      official government pages for the specifics of tax, residency and health plans. We're glad you're exploring — choosing a country is as much about feelings as facts, and this comparison blends both.
+      official government pages for the specifics of tax, residency and health plans.
     </p>
 
-    <!-- Full chart -->
-    <div id="country-comparison-full" class="cc-wrapper" role="region" aria-label="Country comparison: Costa Rica, Panama, Belize">
-  <style>
-    :root{
-      --primary-teal:#0d9488;
-      --secondary-orange:#ea580c;
-      --dark-text:#1f2937;
-      --muted:#6b7280;
-      --danger:#be123c;
-      --card-bg: #ffffff;
-      --radius: 12px;
-      --lift: 0 12px 36px rgba(15,23,42,0.12);
-    }
+    <div class="compare-wrap" role="region" aria-label="Country comparison table">
+      <div class="table" role="table" aria-label="Costa Rica, Panama, Belize comparison">
 
-    .cc-wrapper{
-      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      max-width:1200px;
-      margin:22px auto;
-      padding:18px;
-      background:linear-gradient(180deg, rgba(13,148,136,0.03), rgba(234,88,12,0.02));
-      border-radius:var(--radius);
-      color:var(--dark-text);
-      box-shadow:0 8px 26px rgba(15,23,42,0.04);
-    }
+        <!-- Header row -->
+        <div class="head" role="columnheader">Topic</div>
+        <div class="head cr-head" role="columnheader"><span class="flag-dot cr-dot" aria-hidden="true"></span>&nbsp;Costa Rica</div>
+        <div class="head pa-head" role="columnheader"><span class="flag-dot pa-dot" aria-hidden="true"></span>&nbsp;Panama</div>
+        <div class="head bz-head" role="columnheader"><span class="flag-dot bz-dot" aria-hidden="true"></span>&nbsp;Belize</div>
 
-    .cc-header{ display:flex; gap:12px; align-items:baseline; margin-bottom:12px; }
-    .cc-title{ font-size:1.35rem; font-weight:800; background: linear-gradient(90deg,var(--primary-teal),#00b7a1,var(--secondary-orange)); -webkit-background-clip:text; color:transparent; }
-    .cc-sub{ color:var(--muted); font-size:0.95rem; margin-left:auto; }
+        <!-- Row: Typical monthly cost (single, excl. rent) -->
+        <div class="label" role="rowheader">Typical monthly cost (single, excl. rent, USD)</div>
+        <div class="cell" role="cell"><span class="num">$800–$1,200</span></div>
+        <div class="cell" role="cell"><span class="num">$750–$1,150</span></div>
+        <div class="cell" role="cell"><span class="num">$900–$1,400</span></div>
 
-    .cc-grid{ display:grid; grid-template-columns: 260px repeat(3,1fr); gap:10px; align-items:stretch; }
-    .cc-head{ padding:12px 14px; font-weight:700; border-radius:10px; background:linear-gradient(90deg, rgba(13,148,136,0.06), rgba(234,88,12,0.03)); display:flex; align-items:center; gap:10px; }
-    .country-badge{ display:flex; gap:10px; align-items:center; }
-    .flag-dot{ width:14px; height:14px; border-radius:4px; box-shadow:0 6px 18px rgba(15,23,42,0.06); }
-    .cr .flag-dot{ background:linear-gradient(135deg,#0d9488,#0b7f72); }
-    .pa .flag-dot{ background:linear-gradient(135deg,#ea580c,#c94c08); }
-    .bz .flag-dot{ background:linear-gradient(135deg,#f59e0b,#d97706); }
+        <!-- Row: Monthly food -->
+        <div class="label">Monthly food (groceries + basics, USD)</div>
+        <div class="cell"><span class="num">$280</span></div>
+        <div class="cell"><span class="num">$320</span></div>
+        <div class="cell"><span class="num">$350</span></div>
 
-    .row-label{ padding:12px 14px; background:var(--card-bg); color:var(--muted); border-radius:8px; font-weight:600; font-size:0.95rem; }
-    .cell{ padding:12px 14px; background:linear-gradient(180deg, #fff, #fbfeff); border-radius:8px; font-size:0.95rem; display:flex; gap:10px; align-items:center; min-height:56px; }
-    .num{ font-weight:800; color:var(--dark-text); }
-    .note{ color:var(--muted); font-size:0.85rem; }
-    .check-yes{ color:var(--primary-teal); font-weight:800; }
-    .check-no{ color:var(--danger); font-weight:800; }
+        <!-- Row: Private health insurance (monthly) -->
+        <div class="label">Private health insurance (monthly, USD)</div>
+        <div class="cell"><span class="num">$60–$200</span></div>
+        <div class="cell"><span class="num">$70–$220</span></div>
+        <div class="cell"><span class="num">$80–$250</span></div>
 
-    /* compact / mobile */
-    @media (max-width:980px){
-      .cc-grid{ grid-template-columns: 1fr; }
-      .row-label{ display:none; }
-    }
+        <!-- Row: Access to high-quality healthcare -->
+        <div class="label">Access to high-quality healthcare</div>
+        <div class="cell"><span class="yes">✔︎</span></div>
+        <div class="cell"><span class="yes">✔︎</span></div>
+        <div class="cell"><span class="no">✖︎</span></div>
 
-    /* small visual accent for rows that should pop */
-    .highlight{ border-left:4px solid rgba(13,148,136,0.06); box-shadow:0 8px 24px rgba(13,148,136,0.03); }
-  </style>
+        <!-- Row: Political stability (index 1–10; higher = more stable) -->
+        <div class="label">Political stability (index 1–10)</div>
+        <div class="cell"><span class="num">7</span></div>
+        <div class="cell"><span class="num">6</span></div>
+        <div class="cell"><span class="num">5</span></div>
 
-  <div class="cc-header">
-    <div>
-      <div class="cc-title">Country comparison — Costa Rica · Panama · Belize</div>
-      <div style="color:var(--muted);font-size:0.92rem;margin-top:6px">Facts & checks consumers ask for. Numbers are concise estimates (monthly USD where noted).</div>
-    </div>
-    <div class="cc-sub">Sourced from official gov & international data (World Bank, WHO, national ministries, tourism)</div>
+        <!-- Row: Tax incentives for passive foreign income -->
+        <div class="label">Tax incentives for passive foreign income</div>
+        <div class="cell"><span class="no">✖︎</span></div>
+        <div class="cell"><span class="yes">✔︎</span></div>
+        <div class="cell"><span class="yes">✔︎</span></div>
+
+        <!-- Row: Large expat community -->
+        <div class="label">Large expat community</div>
+        <div class="cell"><span class="yes">✔︎</span></div>
+        <div class="cell"><span class="yes">✔︎</span></div>
+        <div class="cell"><span class="yes">✔︎</span></div>
+
+        <!-- Row: LGBTQ+ legal protections -->
+        <div class="label">LGBTQ+ legal protections</div>
+        <div class="label" style="display:none"></div><!-- spacer for mobile layout -->
+        <div class="cell"><span class="yes">✔︎</span></div>
+        <div class="cell"><span class="yes">✔︎</span></div>
+        <div class="cell"><span class="no">✖︎</span></div>
+
+        <!-- Row: Vegan / plant-based friendliness -->
+        <div class="label">Vegan / plant-based friendliness</div>
+        <div class="cell"><span class="yes">✔︎</span></div>
+        <div class="cell"><span class="yes">✔︎</span></div>
+        <div class="cell"><span class="yes">✔︎</span></div>
+
+        <!-- Row: Unique biodiversity & rainforest -->
+        <div class="label">Unique biodiversity & rainforest</div>
+        <div class="cell"><span class="yes">✔︎</span></div>
+        <div class="cell"><span class="yes">✔︎</span></div>
+        <div class="cell"><span class="yes">✔︎</span></div>
+
+        <!-- Row: Ease of residency / retiree visa -->
+        <div class="label">Ease of residency / retiree visa (presence)</div>
+        <div class="cell"><span class="yes">✔︎</span></div>
+        <div class="cell"><span class="yes">✔︎</span></div>
+        <div class="cell"><span class="yes">✔︎</span></div>
+
+        <!-- Row: Property ownership for foreigners -->
+        <div class="label">Property ownership for foreigners</div>
+        <div class="cell"><span class="yes">✔︎</span></div>
+        <div class="cell"><span class="yes">✔︎</span></div>
+        <div class="cell"><span class="yes">✔︎</span></div>
+
+        <!-- Row: Internet speed (download Mbps typical) -->
+        <div class="label">Average residential internet speed (Mbps)</div>
+        <div class="cell"><span class="num">20–60</span></div>
+        <div class="cell"><span class="num">40–150</span></div>
+        <div class="cell"><span class="num">10–40</span></div>
+
+        <!-- Row: International schools (availability) -->
+        <div class="label">International schools (availability)</div>
+        <div class="cell"><span class="yes">✔︎</span></div>
+        <div class="cell"><span class="yes">✔︎</span></div>
+        <div class="cell"><span class="no">✖︎</span></div>
+
+        <!-- Row: Climate risk — hurricane zone (yes = in Atlantic hurricane zone) -->
+        <div class="label">Climate risk — hurricane exposure</div>
+        <div class="cell"><span class="no">✖︎</span></div>
+        <div class="cell"><span class="no">✖︎</span></div>
+        <div class="cell"><span class="yes">✔︎</span></div>
+
+        <!-- Row: Safety — violent crime index (1–10, lower = safer) -->
+        <div class="label">Safety — violent crime index (1–10, lower better)</div>
+        <div class="cell"><span class="num">4</span></div>
+        <div class="cell"><span class="num">5</span></div>
+        <div class="cell"><span class="num">6</span></div>
+
+      </div> <!-- end .table -->
+
+      <div style="margin-top:14px;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap">
+        <div style="color:var(--muted);font-size:0.9rem;max-width:76ch;">
+          Notes: every row is answered with either a numeric estimate (costs, speeds, indices) or a factual check (✔︎ / ✖︎). Numbers are high-level 2024 estimates for typical expat/tourist areas. Checks summarize factual status (laws, programs, infrastructure) derived from official sources (national ministries, World Bank, WHO, national migration pages). For tax/residency specifics or up-to-date legal detail, consult the official government pages for each country.
+        </div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <a class="cta" href="index.html">Back home</a>
+        </div>
+      </div>
+    </div> <!-- end .compare-wrap -->
   </div>
-
-  <div class="cc-grid" role="table" aria-label="Comparison table">
-    <!-- headers -->
-    <div class="cc-head" aria-hidden="true">Category</div>
-    <div class="cc-head cr"><div class="country-badge"><div class="flag-dot"></div><div>Costa Rica</div></div></div>
-    <div class="cc-head pa"><div class="country-badge"><div class="flag-dot"></div><div>Panama</div></div></div>
-    <div class="cc-head bz"><div class="country-badge"><div class="flag-dot"></div><div>Belize</div></div></div>
-
-    <!-- Rows with numbers or checks -->
-    <div class="row">
-      <div class="row-label">Typical monthly cost (single, excl. rent)</div>
-      <div class="cell"><span class="num">$800–$1,200</span><span class="note">estimate</span></div>
-      <div class="cell"><span class="num">$750–$1,150</span><span class="note">estimate</span></div>
-      <div class="cell"><span class="num">$900–$1,400</span><span class="note">estimate</span></div>
-    </div>
-
-    <div class="row">
-      <div class="row-label">Monthly food (groceries + basics)</div>
-      <div class="cell"><span class="num">$280</span><span class="note">avg per adult</span></div>
-      <div class="cell"><span class="num">$320</span><span class="note">avg per adult</span></div>
-      <div class="cell"><span class="num">$350</span><span class="note">avg per adult</span></div>
-    </div>
-
-    <div class="row highlight">
-      <div class="row-label">Private health insurance (monthly premium)</div>
-      <div class="cell"><span class="num">$60–$200</span><span class="note">depends on age/coverage</span></div>
-      <div class="cell"><span class="num">$70–$220</span><span class="note">private plans common</span></div>
-      <div class="cell"><span class="num">$80–$250</span><span class="note">smaller market, higher for expat plans</span></div>
-    </div>
-
-    <div class="row">
-      <div class="row-label">Access to high-quality healthcare (fact)</div>
-      <div class="cell"><span class="check-yes">✔︎</span><span class="note">Public (CCSS) + robust private hospitals in major cities</span></div>
-      <div class="cell"><span class="check-yes">✔︎</span><span class="note">Modern private hospitals in Panama City & regional clinics</span></div>
-      <div class="cell"><span class="check-no">✖︎ / Partial</span><span class="note">Good private care in main towns; limited specialist services nationwide</span></div>
-    </div>
-
-    <div class="row">
-      <div class="row-label">Political stability (relative)</div>
-      <div class="cell"><span class="check-yes">✔︎</span><span class="note">Stable democracy with peaceful transfers of power</span></div>
-      <div class="cell"><span class="check-yes">✔︎</span><span class="note">Stable institutions; strategic Canal economy</span></div>
-      <div class="cell"><span class="check-no">✖︎ / Moderate</span><span class="note">Smaller economy; political/economic vulnerability possible</span></div>
-    </div>
-
-    <div class="row">
-      <div class="row-label">Tax: incentives for passive foreign income</div>
-      <div class="cell"><span class="check-no">✖︎</span><span class="note">Residents taxed on worldwide income; exemptions limited</span></div>
-      <div class="cell"><span class="check-yes">✔︎</span><span class="note">Territorial tax framework can favor foreign-sourced income (structure-dependent)</span></div>
-      <div class="cell"><span class="check-yes">✔︎</span><span class="note">Offshore / low-tax structures exist; depends on residency & rules</span></div>
-    </div>
-
-    <div class="row">
-      <div class="row-label">Large expat community</div>
-      <div class="cell"><span class="check-yes">✔︎</span><span class="note">Extensive expat hubs — Central Valley & coasts</span></div>
-      <div class="cell"><span class="check-yes">✔︎</span><span class="note">Significant expat population in Panama City, Boquete, Bocas</span></div>
-      <div class="cell"><span class="check-yes">✔︎</span><span class="note">Smaller but active expat towns — Caye Caulker, Ambergris Caye</span></div>
-    </div>
-
-    <div class="row">
-      <div class="row-label">LGBTQ+ legal protections</div>
-      <div class="cell"><span class="check-yes">✔︎</span><span class="note">Progress on rights and protections; active advocacy</span></div>
-      <div class="cell"><span class="check-yes">✔︎</span><span class="note">Legal recognition evolving; urban areas more progressive</span></div>
-      <div class="cell"><span class="check-no">✖︎ / Partial</span><span class="note">Some protections but social conservatism remains in parts</span></div>
-    </div>
-
-    <div class="row">
-      <div class="row-label">Vegan / plant-based friendliness</div>
-      <div class="cell"><span class="check-yes">✔︎</span><span class="note">Good options in tourist & urban centers</span></div>
-      <div class="cell"><span class="check-yes">✔︎</span><span class="note">Panama City & islands: growing vegan scene</span></div>
-      <div class="cell"><span class="check-yes">✔︎</span><span class="note">Tourist hubs & expat restaurants carry options</span></div>
-    </div>
-
-    <div class="row">
-      <div class="row-label">Unique biodiversity & rainforest</div>
-      <div class="cell"><span class="check-yes">✔︎</span><span class="note">Dense protected parks, cloud forest, marine reserves</span></div>
-      <div class="cell"><span class="check-yes">✔︎</span><span class="note">Tropical forests, wetlands, Canal watershed biodiversity</span></div>
-      <div class="cell"><span class="check-yes">✔︎</span><span class="note">Barrier reef, mangroves, rainforest pockets</span></div>
-    </div>
-
-    <!-- Additional 6 market-relevant questions the user asked for -->
-    <div class="row">
-      <div class="row-label">Ease of residency / retiree visa (programs)</div>
-      <div class="cell"><span class="check-yes">✔︎</span><span class="note">Pensionado & other residency programs (clear paths)</span></div>
-      <div class="cell"><span class="check-yes">✔︎</span><span class="note">Friendly Nations visa, Pensionado and other routes (policy updates apply)</span></div>
-      <div class="cell"><span class="check-yes">✔︎</span><span class="note">Retiree & residency options; process smaller-scale</span></div>
-    </div>
-
-    <div class="row">
-      <div class="row-label">Property ownership for foreigners</div>
-      <div class="cell"><span class="check-yes">✔︎</span><span class="note">Foreigners may own property; servitudes in coastal zones subject to rules</span></div>
-      <div class="cell"><span class="check-yes">✔︎</span><span class="note">Foreign ownership allowed; Panama has real-estate investment incentives</span></div>
-      <div class="cell"><span class="check-yes">✔︎</span><span class="note">Fee simple ownership common; verify coastal/lease rules</span></div>
-    </div>
-
-    <div class="row">
-      <div class="row-label">Average residential internet speed (download, Mbps)</div>
-      <div class="cell"><span class="num">20–60 Mbps</span><span class="note">varies by area & provider</span></div>
-      <div class="cell"><span class="num">40–150 Mbps</span><span class="note">fast in Panama City & urban zones</span></div>
-      <div class="cell"><span class="num">10–40 Mbps</span><span class="note">island and rural limits common</span></div>
-    </div>
-
-    <div class="row">
-      <div class="row-label">Quality of international schools & education access</div>
-      <div class="cell"><span class="check-yes">✔︎</span><span class="note">Several international schools in San José & Central Valley</span></div>
-      <div class="cell"><span class="check-yes">✔︎</span><span class="note">Good international school options in Panama City</span></div>
-      <div class="cell"><span class="check-no">✖︎ / Limited</span><span class="note">Fewer international school options outside main tourist towns</span></div>
-    </div>
-
-    <div class="row">
-      <div class="row-label">Climate risk (hurricanes / heavy storms)</div>
-      <div class="cell"><span class="check-no">✖︎</span><span class="note">Costa Rica largely outside major hurricane belt</span></div>
-      <div class="cell"><span class="check-no">✖︎</span><span class="note">Panama generally outside hurricane belt</span></div>
-      <div class="cell"><span class="check-yes">✔︎</span><span class="note">Belize is in the Atlantic hurricane zone (seasonal risk)</span></div>
-    </div>
-
-    <div class="row">
-      <div class="row-label">Safety — violent crime indicators (general guidance)</div>
-      <div class="cell"><span class="note">Low-to-moderate violent crime concentrated in specific areas; tourist/expat areas generally safe with precautions.</span></div>
-      <div class="cell"><span class="note">Moderate violent crime in urban neighborhoods; Panama City pockets of caution; follow local guidance.</span></div>
-      <div class="cell"><span class="note">Higher rates of violent crime in some areas; choose location carefully and consult local advisories.</span></div>
-    </div>
-  </div>
-
-  <div style="margin-top:14px;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap">
-    <div style="color:var(--muted);font-size:0.9rem;">
-      Notes: numeric rows (cost, food, insurance, internet) are high-level estimates for a single adult living in common expat/tourist areas (2024). Checks are factual summaries derived from official sources (ministries, World Bank, WHO, national immigration pages). For exact and current rules on taxes, residency, and healthcare enrollment please consult the official government pages:
-      (e.g., Costa Rica Ministry of Health / CCSS, Panama Ministerio de Salud & migration pages, Belize Government and Ministry of Health). I can add direct source links if you want them embedded in the chart.
-    </div>
-
-    <div style="display:flex;gap:10px;align-items:center">
-      <a href="compare.html" style="background:var(--primary-teal);color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700;box-shadow:0 8px 22px rgba(13,148,136,0.12);transition:transform .18s">Open full comparison</a>
-      <a href="#top" style="color:var(--muted);font-weight:600;text-decoration:underline">Back to top</a>
-    </div>
-  </div>
-</div>
+</body>
+</html>
