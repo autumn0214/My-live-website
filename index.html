@@ -97,10 +97,7 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
-    </style>
-    <style>
-  .compare-btn{ background:linear-gradient(90deg,var(--primary-teal,#0d9488),#00b7a1); color:white; text-decoration:none; }
-  .compare-btn:hover{ transform: translateY(-6px); box-shadow: 0 14px 36px rgba(13,148,136,0.14); }
+
 </style>
 </head>
 <body class="font-sans text-dark-text bg-gray-50">
@@ -164,8 +161,9 @@
           <div class="mt-2 border-t border-gray-100"></div>
             <a href="compare.html" class="menu-link compare-btn" style="display:inline-block; padding:10px 12px; border-radius:10px; font-weight:700; transition:transform 180ms, box-shadow 180ms; box-shadow: 0 6px 14px rgba(15,23,42,0.06);">
   Compare Countries       
-            <a href="#page-packages" class="block px-4 py-2 text-gray-700 hover:bg-gray-50" role="menuitem">Packages</a>
-          <a href="#page-about" class="block px-4 py-2 text-gray-700 hover:bg-gray-50" role="menuitem">About Us</a>
+<a href="packages.html" class="menu-link packages-link inline-block px-4 py-2 rounded-lg font-semibold transition transform duration-200" style="background:linear-gradient(90deg,#0d9488,#00b7a1);color:#fff;box-shadow:0 8px 20px rgba(13,148,136,0.12)">
+  Packages         
+    <a href="#page-about" class="block px-4 py-2 text-gray-700 hover:bg-gray-50" role="menuitem">About Us</a>
           <div class="mt-2 border-t border-gray-100"></div>
           <a href="#page-login" class="block px-4 py-2 text-gray-700 hover:bg-gray-50" role="menuitem">Client Login</a>
           <a href="#page-contact" class="block px-4 py-2 text-white bg-primary-teal hover:bg-secondary-orange rounded-b-lg text-center mx-3 my-3 py-2 font-semibold" role="menuitem">Get Started</a>
@@ -487,162 +485,60 @@
   </div>
 </section>
                     
-        <section id="page-packages" class="py-16 sm:py-24 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-base text-primary-teal font-semibold tracking-wide uppercase">Tailored Support</h2>
-                <p class="mt-2 text-3xl font-extrabold text-dark-text sm:text-4xl">
-                    Comprehensive Relocation Packages
-                </p>
-                <p class="mt-4 max-w-3xl text-lg text-gray-500 lg:mx-auto">
-                    Choose the level of support that fits your move, from local assistance to end-to-end international concierge service.
-                </p>
-            </div>
-            
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
-                <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                    
-                    <div class="p-6 bg-gray-50 rounded-xl shadow-lg border-t-4 border-primary-teal transition duration-300 hover:shadow-xl">
-                        <h3 class="text-2xl font-bold text-primary-teal">1. Essential Move Package</h3>
-                        <p class="mt-2 text-sm text-secondary-orange font-semibold">Ideal for: Singles or small households relocating locally</p>
-                        <p class="text-3xl font-extrabold mt-4 text-dark-text">
-                            $249 – $349 
-                            <span class="text-base text-gray-500 font-medium block">(+ shipping costs)</span>
-                        </p>
-                        <p class="mt-4 font-semibold border-b pb-2 text-gray-800">Includes:</p>
-                        <ul class="feature-list mt-3 space-y-2 text-sm text-gray-700">
-                            <li>1-hour virtual consultation & personalized relocation plan</li>
-                            <li>Moving checklist + timeline</li>
-                            <li>Local vendor referrals & preferred movers for packing or transport</li>
-                            <li>Basic address updates & mail forwarding support</li>
-                            <li>Third-party shipping coordination: We book and manage your move with budget-friendly movers (SDC International or Latin American Cargo)</li>
-                        </ul>
-                    </div>
+        <section id="page-packages-preview" class="py-16 sm:py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-base text-primary-teal font-semibold tracking-wide uppercase">Tailored Support</h2>
+    <p class="mt-2 text-3xl font-extrabold text-dark-text sm:text-4xl">Comprehensive Relocation Packages</p>
+    <p class="mt-4 max-w-3xl text-lg text-gray-500 lg:mx-auto">Choose the level of support that fits your move, from local assistance to end-to-end international concierge service.</p>
+  </div>
 
-                    <div class="p-6 bg-gray-50 rounded-xl shadow-lg border-t-4 border-secondary-orange transition duration-300 hover:shadow-xl">
-                        <h3 class="text-2xl font-bold text-secondary-orange">2. Standard Relocation Package</h3>
-                        <p class="mt-2 text-sm text-primary-teal font-semibold">Ideal for: Individuals or couples moving within the same state or region</p>
-                        <p class="text-3xl font-extrabold mt-4 text-dark-text">
-                            $399 – $599 
-                            <span class="text-base text-gray-500 font-medium block">(+ shipping fees)</span>
-                        </p>
-                        <p class="mt-4 font-semibold border-b pb-2 text-gray-800">Includes:</p>
-                        <ul class="feature-list mt-3 space-y-2 text-sm text-gray-700">
-                            <li>Everything in Essential Move Package</li>
-                            <li>Budget breakdown & cost-saving strategy</li>
-                            <li>Utility setup coordination (electric, water, internet, etc.)</li>
-                            <li>Neighborhood orientation (schools, hospitals, transportation)</li>
-                            <li>Third-party mover coordination: Booking, scheduling, and shipment tracking for your move</li>
-                        </ul>
-                    </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <!-- Card A -->
+      <div class="p-6 bg-gray-50 rounded-xl shadow-lg border-t-4 border-primary-teal transition duration-300 transform hover:-translate-y-4 hover:shadow-2xl">
+        <h3 class="text-2xl font-bold text-primary-teal">1. Essential Move Package</h3>
+        <p class="mt-2 text-sm text-secondary-orange font-semibold">Ideal for: Singles or small households relocating locally</p>
+        <p class="text-3xl font-extrabold mt-4 text-dark-text">$249 – $349 <span class="text-base text-gray-500 font-medium block">(+ shipping costs)</span></p>
+        <p class="mt-4 font-semibold border-b pb-2 text-gray-800">Includes:</p>
+        <ul class="feature-list mt-3 space-y-2 text-sm text-gray-700">
+          <li>1-hour virtual consultation & personalized plan</li>
+          <li>Moving checklist + timeline</li>
+          <li>Local vendor referrals & preferred movers</li>
+        </ul>
+      </div>
 
-                    <div class="p-6 bg-white rounded-xl shadow-2xl border-t-4 border-primary-teal ring-2 ring-primary-teal transform scale-[1.03] transition duration-300 hover:shadow-xl lg:col-span-1">
-                        <h3 class="text-2xl font-bold text-primary-teal">3. Family Transition Package</h3>
-                        <p class="mt-2 text-sm text-secondary-orange font-semibold">Ideal for: Families with children or dependents moving locally or cross-state</p>
-                        <p class="text-3xl font-extrabold mt-4 text-dark-text">
-                            $749 – $1,099 
-                            <span class="text-base text-gray-500 font-medium block">(+ shipping fees)</span>
-                        </p>
-                        <p class="mt-4 font-semibold border-b pb-2 text-gray-800">Includes:</p>
-                        <ul class="feature-list mt-3 space-y-2 text-sm text-gray-700">
-                            <li>Everything in Standard Relocation Package</li>
-                            <li>Family-focused relocation plan (schools, childcare, pet transport)</li>
-                            <li>Moving day oversight (virtual or in-person)</li>
-                            <li>Housing assistance (rental or purchase support)</li>
-                            <li>One-month follow-up support after move</li>
-                            <li>Third-party shipping concierge: Full oversight of your shipment to ensure items arrive safely and on time</li>
-                        </ul>
-                    </div>
-                </div>
+      <!-- Card B -->
+      <div class="p-6 bg-gray-50 rounded-xl shadow-lg border-t-4 border-secondary-orange transition duration-300 transform hover:-translate-y-4 hover:shadow-2xl">
+        <h3 class="text-2xl font-bold text-secondary-orange">2. Standard Relocation Package</h3>
+        <p class="mt-2 text-sm text-primary-teal font-semibold">Ideal for: Individuals or couples</p>
+        <p class="text-3xl font-extrabold mt-4 text-dark-text">$399 – $599 <span class="text-base text-gray-500 font-medium block">(+ shipping fees)</span></p>
+        <p class="mt-4 font-semibold border-b pb-2 text-gray-800">Includes:</p>
+        <ul class="feature-list mt-3 space-y-2 text-sm text-gray-700">
+          <li>Everything in Essential</li>
+          <li>Utility setup coordination</li>
+          <li>Neighborhood orientation</li>
+        </ul>
+      </div>
 
-                <div class="grid grid-cols-1 gap-8 mt-12 md:grid-cols-2 lg:max-w-5xl lg:mx-auto">
-                    
-                    <div class="p-6 bg-gray-50 rounded-xl shadow-lg border-t-4 border-secondary-orange transition duration-300 hover:shadow-xl">
-                        <h3 class="text-2xl font-bold text-secondary-orange">4. Premium Relocation Concierge</h3>
-                        <p class="mt-2 text-sm text-primary-teal font-semibold">Ideal for: Families or professionals relocating long-distance, including Central America</p>
-                        <p class="text-3xl font-extrabold mt-4 text-dark-text">
-                            $1,499 – $2,499 
-                            <span class="text-base text-gray-500 font-medium block">(+ shipping fees)</span>
-                        </p>
-                        <p class="mt-4 font-semibold border-b pb-2 text-gray-800">Includes:</p>
-                        <ul class="feature-list mt-3 space-y-2 text-sm text-gray-700">
-                            <li>Everything in Family Transition Package</li>
-                            <li>End-to-end move coordination (from pickup to delivery)</li>
-                            <li>Virtual property search & local agent connection</li>
-                            <li>Travel itinerary planning (flights, car transport)</li>
-                            <li>Settling-in support (DMV, local registrations, insurance)</li>
-                            <li>24/7 access to your assigned relocation specialist for 30 days</li>
-                            <li>International mover coordination: Book and manage shipping via trusted companies like SDC International or Latin American Cargo, including customs and documentation</li>
-                        </ul>
-                    </div>
+      <!-- Card C (featured) -->
+      <div class="p-6 bg-white rounded-xl shadow-2xl border-t-4 border-primary-teal ring-2 ring-primary-teal transform transition duration-300 hover:-translate-y-5 hover:scale-[1.01] hover:shadow-2xl">
+        <h3 class="text-2xl font-bold text-primary-teal">3. Family Transition Package</h3>
+        <p class="mt-2 text-sm text-secondary-orange font-semibold">Ideal for: Families moving locally or cross-state</p>
+        <p class="text-3xl font-extrabold mt-4 text-dark-text">$749 – $1,099 <span class="text-base text-gray-500 font-medium block">(+ shipping fees)</span></p>
+        <p class="mt-4 font-semibold border-b pb-2 text-gray-800">Includes:</p>
+        <ul class="feature-list mt-3 space-y-2 text-sm text-gray-700">
+          <li>Everything in Standard</li>
+          <li>Family relocation plan & moving day oversight</li>
+          <li>Housing assistance & one-month follow-up</li>
+        </ul>
+      </div>
+    </div>
 
-                    <div class="p-6 bg-gray-50 rounded-xl shadow-lg border-t-4 border-primary-teal transition duration-300 hover:shadow-xl">
-                        <h3 class="text-2xl font-bold text-primary-teal">5. Elite Relocation Experience</h3>
-                        <p class="mt-2 text-sm text-secondary-orange font-semibold">Ideal for: Families or individuals seeking full-service, stress-free relocation</p>
-                        <p class="text-3xl font-extrabold mt-4 text-dark-text">
-                            $3,000 – $5,000+ 
-                            <span class="text-base text-gray-500 font-medium block">(+ shipping fees)</span>
-                        </p>
-                        <p class="mt-4 font-semibold border-b pb-2 text-gray-800">Includes:</p>
-                        <ul class="feature-list mt-3 space-y-2 text-sm text-gray-700">
-                            <li>Everything in Premium Relocation Concierge</li>
-                            <li>Full packing/unpacking management</li>
-                            <li>Home setup assistance (furniture, utilities, décor setup)</li>
-                            <li>School & community integration assistance</li>
-                            <li>Quarterly check-ins for 6 months</li>
-                            <li>Priority scheduling + dedicated family relocation manager</li>
-                            <li>Comprehensive shipping concierge: End-to-end management of movers, customs, delivery, and arrival setup for a seamless international relocation</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="mt-20 grid grid-cols-1 lg:grid-cols-2 gap-12 border-t pt-12 border-gray-200">
-                    
-                    <div>
-                        <h4 class="text-2xl font-bold text-secondary-orange mb-4">✨ Optional Add-Ons</h4>
-                        <div class="space-y-3">
-                            <p class="flex justify-between items-center text-lg text-gray-700 border-b pb-1">
-                                <span>Pet relocation coordination</span> <span class="font-bold text-dark-text">+$150</span>
-                            </p>
-                            <p class="flex justify-between items-center text-lg text-gray-700 border-b pb-1">
-                                <span>Vehicle transport booking</span> <span class="font-bold text-dark-text">+$200</span>
-                            </p>
-                            <p class="flex justify-between items-center text-lg text-gray-700 border-b pb-1">
-                                <span>Deep cleaning setup</span> <span class="font-bold text-dark-text">+$125</span>
-                            </p>
-                            <p class="flex justify-between items-center text-lg text-gray-700 border-b pb-1">
-                                <span>Virtual “new home setup” coaching call</span> <span class="font-bold text-dark-text">+$75</span>
-                            </p>
-                            <p class="flex justify-between items-center text-lg text-gray-700">
-                                <span>Weekend or after-hours support</span> <span class="font-bold text-dark-text">+$100</span>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h4 class="text-2xl font-bold text-primary-teal mb-4">💼 Discounts & Key Notes</h4>
-                        
-                        <div class="bg-primary-teal/10 p-4 rounded-lg space-y-3">
-                            <p class="font-semibold text-lg text-primary-teal">Discounts Available:</p>
-                            <ul class="list-disc ml-5 text-gray-700 space-y-1">
-                                <li>**Returning clients:** 10% off any package</li>
-                                <li>**Military, teachers, or first responders:** 15% off any package</li>
-                                <li>**Referrals:** $50 service credit per successful referral</li>
-                            </ul>
-                        </div>
-
-                        <div class="mt-4 p-4 rounded-lg bg-gray-100 border border-gray-200 space-y-2 text-sm text-gray-600">
-                            <p class="font-bold text-dark-text">✅ Key Notes for Clients:</p>
-                            <ul class="list-disc ml-5 space-y-1">
-                                <li>Shipping costs are separate and based on volume, weight, and destination.</li>
-                                <li>You get **peace of mind**: Autumn Point manages all communication with movers and ensures your belongings arrive safely.</li>
-                                <li>We handle logistics, timelines, and local setup, so you only worry about settling into your new home.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
+    <div class="mt-8 text-center">
+      <a href="packages.html" class="inline-block bg-secondary-orange text-white px-6 py-3 rounded-xl font-bold shadow-lg transform transition duration-200 hover:-translate-y-6 hover:scale-[1.01]">View more packages →</a>
+    </div>
+  </div>
+</section>
 
         <section id="page-residency" class="py-16 sm:py-24 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
