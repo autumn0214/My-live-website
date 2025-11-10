@@ -279,11 +279,15 @@
                 </div>
 
                 <div class="mt-16 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-8">
-  <!-- Costa Rica top half (background-image; focal point centered-top) -->
-<div class="w-full h-48 overflow-hidden bg-cover bg-center"
-     style="background-image: url('costarica.jpg'); background-position: center top;"
-     role="img" aria-label="Lush green landscape of Costa Rica">
-</div>
+  <!-- Costa Rica card -->
+  <div class="rounded-xl shadow-2xl overflow-hidden group transition duration-300 hover:scale-[1.02]">
+    <!-- top half: image (keeps original h-48 size) -->
+    <div class="w-full h-48 overflow-hidden">
+      <img class="w-full h-full object-cover transition duration-500 group-hover:opacity-80"
+           src="costarica.jpg"
+           alt="Lush green landscape of Costa Rica"
+           onerror="this.onerror=null; this.src='https://placehold.co/600x400/0d9488/ffffff?text=Costa+Rica+Pura+Vida'">
+    </div>
 
     <!-- content (unchanged layout/colors) -->
     <div class="p-6">
@@ -297,39 +301,48 @@
       </a>
     </div>
   </div>
-                    <div class="rounded-xl shadow-2xl overflow-hidden bg-white group transition duration-300 hover:scale-[1.02]">
-                        <img class="w-full h-48 object-cover transition duration-500 group-hover:opacity-80"
-                             src="https://placehold.co/600x400/ea580c/ffffff?text=Panama+City+Skyline"
-                             alt="Modern skyline of Panama City" onerror="this.onerror=null; this.src='https://placehold.co/600x400/ea580c/ffffff?text=Panama'">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold text-secondary-orange">Panama</h3>
-                            <p class="mt-3 text-gray-600">
-                                A global hub offering modern infrastructure, excellent tax incentives, and the famous 'Friendly Nations' visa for expats.
-                            </p>
-                            <a href="#page-panama"
-                                class="mt-4 text-secondary-orange font-semibold inline-flex items-center hover:underline focus:outline-none">
-                                View Destination Guide &rarr;
-                            </a>
-                        </div>
-                    </div>
 
-                    <div class="rounded-xl shadow-2xl overflow-hidden bg-white group transition duration-300 hover:scale-[1.02]">
-                        <img class="w-full h-48 object-cover transition duration-500 group-hover:opacity-80"
-                             src="https://placehold.co/600x400/be123c/ffffff?text=Belize+Coral+Reef"
-                             alt="Beautiful barrier reef in Belize" onerror="this.onerror=null; this.src='https://placehold.co/600x400/be123c/ffffff?text=Belize'">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold text-danger-red">Belize</h3>
-                            <p class="mt-3 text-gray-600">
-                                The only English-speaking country in Central America, offering Caribbean lifestyle, low-cost living, and simple residency requirements.
-                            </p>
-                            <a href="#page-belize"
-                                class="mt-4 text-secondary-orange font-semibold inline-flex items-center hover:underline focus:outline-none">
-                                View Destination Guide &rarr;
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!-- Panama card -->
+  <div class="rounded-xl shadow-2xl overflow-hidden group transition duration-300 hover:scale-[1.02]">
+    <div class="w-full h-48 overflow-hidden">
+      <img class="w-full h-full object-cover transition duration-500 group-hover:opacity-80"
+           src="panama.jpg"
+           alt="Coastal and city landscape of Panama"
+           onerror="this.onerror=null; this.src='https://placehold.co/600x400/0ea5a4/ffffff?text=Panama'">
+    </div>
+
+    <div class="p-6">
+      <h3 class="text-2xl font-bold text-primary-teal">Panama</h3>
+      <p class="mt-3 text-gray-600">
+        A modern hub with excellent connectivity, diverse landscapes, and attractive residency options. Great for expats seeking convenience and variety.
+      </p>
+      <a href="panama.html"
+         class="mt-4 text-secondary-orange font-semibold inline-flex items-center hover:underline focus:outline-none">
+        View Destination Guide &rarr;
+      </a>
+    </div>
+  </div>
+
+  <!-- Belize card -->
+  <div class="rounded-xl shadow-2xl overflow-hidden group transition duration-300 hover:scale-[1.02]">
+    <div class="w-full h-48 overflow-hidden">
+      <img class="w-full h-full object-cover transition duration-500 group-hover:opacity-80"
+           src="belize.jpg"
+           alt="Turquoise waters and reef of Belize"
+           onerror="this.onerror=null; this.src='https://placehold.co/600x400/06b6d4/ffffff?text=Belize'">
+    </div>
+
+    <div class="p-6">
+      <h3 class="text-2xl font-bold text-primary-teal">Belize</h3>
+      <p class="mt-3 text-gray-600">
+        Known for its barrier reef, laid-back lifestyle, and English-speaking communities. A great choice for beach lovers and divers.
+      </p>
+      <a href="belize.html"
+         class="mt-4 text-secondary-orange font-semibold inline-flex items-center hover:underline focus:outline-none">
+        View Destination Guide &rarr;
+      </a>
+    </div>
+  </div>
         </section>
 
         <section id="page-costarica" class="py-16 sm:py-24 bg-white border-t-8 border-primary-teal">
