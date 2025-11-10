@@ -128,21 +128,22 @@
     </div>
 
 
-<header class="relative bg-white border-b-2 shadow-sm">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between py-6 lg:py-8">
-      <!-- Logo (left) -->
-      <a href="index.html" class="flex items-center gap-4 group" aria-label="Autumn Point Relocation — Home">
-        <span class="flex-shrink-0">
-          <!-- Inline SVG logo (primary teal) -->
-          <svg width="44" height="44" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="apLogoTitle">
-            <title id="apLogoTitle">Autumn Point logo</title>
-            <path d="M32 8L10 30v18a4 4 0 0 0 4 4h36a4 4 0 0 0 4-4V30L32 8z" stroke="#0d9488" stroke-width="3.5" stroke-linejoin="round" fill="none"/>
-            <path d="M26 36c3-6 9-10 15-11" stroke="#0d9488" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            <path d="M30 44c4-6 10-9 14-11 0 0-1 8-9 14-8 6-12 2-12 2z" fill="#0d9488" opacity="0.95"/>
-          </svg>
-        </span>
-
+</head>
+<body class="font-sans bg-gray-50 text-dark-text">
+  <!-- header: paste this in place of your existing header block -->
+  <header class="sticky top-0 z-50 bg-white border-b-2 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between py-6 lg:py-8">
+        <!-- Logo left: show symbol + wordmark side-by-side -->
+        <a href="index.html" class="flex items-center gap-4 group" aria-label="Autumn Point Relocation — Home">
+          <!-- Use the uploaded full SVG (symbol + wordmark) for fidelity -->
+          <img src="assets/AutumnPointLogo.svg" alt="AutumnPoint logo" class="site-logo-img" />
+          <!-- Optional HTML wordmark (keeps text selectable & accessible) shown on sm+ — remove if the SVG already includes the full wordmark and you prefer not to duplicate -->
+          <div class="hidden sm:flex flex-col leading-tight">
+            <span class="text-2xl font-extrabold" style="color:var(--primary-teal);line-height:1">AutumnPoint</span>
+            <span class="text-xs font-semibold" style="color:var(--muted);letter-spacing:0.08em">Relocation Solutions</span>
+          </div>
+        </a>
         <!-- Wordmark (hidden on very small screens) -->
         <div class="hidden sm:flex flex-col leading-tight">
           <span class="text-xl font-extrabold" style="color:#0d9488">AutumnPoint</span>
