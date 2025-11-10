@@ -1,71 +1,75 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Costa Rica Guide – Autumn Point Relocation</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Costa Rica — Destination Guide</title>
+  <style>
+    :root{
+      --accent:#0d9488;       /* primary teal */
+      --accent-weak: rgba(13,148,136,0.08);
+      --dark:#1f2937;
+      --muted:#6b7280;
+      --bg:#ffffff;
+      --card-radius:12px;
+      --soft-shadow: 0 8px 20px rgba(15,23,42,0.06);
+    }
+    html,body{margin:0;height:100%;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;background:var(--bg);color:var(--dark);}
+    .wrap{max-width:1100px;margin:28px auto;padding:18px;}
+    .shimmer{font-size:1.6rem;font-weight:800;background:linear-gradient(90deg,var(--accent),#00b7a1,#ea580c);-webkit-background-clip:text;color:transparent;position:relative;overflow:hidden}
+    .shimmer::after{content:'';position:absolute;left:-40%;top:0;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.35),transparent);transform:skewX(-20deg);animation:glide 3s linear infinite}
+    @keyframes glide{0%{left:-60%}100%{left:120%}}
+    .intro{color:var(--muted);margin-top:10px;padding:12px;border-radius:10px;background:linear-gradient(180deg,var(--accent-weak),rgba(234,88,12,0.01));box-shadow:var(--soft-shadow)}
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:24px;margin-top:20px}
+    .content h3{margin:0 0 10px;font-size:1.25rem;color:var(--dark)}
+    .card{background:#fff;border-radius:12px;padding:18px;box-shadow:var(--soft-shadow);border-top:4px solid var(--accent)}
+    .cta{display:inline-block;margin-top:12px;color:var(--accent);font-weight:700;text-decoration:none}
+    /* responsive */
+    @media (max-width:980px){ .grid{grid-template-columns:1fr} .card{order:2} }
+  </style>
 </head>
-<body class="font-sans text-dark-text bg-gray-50">
-    <header class="sticky top-0 z-40 bg-white shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-xl font-bold text-primary-teal">Autumn Point</a>
-            <nav>
-                <a href="panama.html" class="text-base font-medium text-gray-700 hover:text-secondary-orange mx-2">Panama</a>
-                <a href="belize.html" class="text-base font-medium text-gray-700 hover:text-secondary-orange mx-2">Belize</a>
-            </nav>
-        </div>
-    </header>
-    <main>
-        <section id="costarica-guide" class="py-16 sm:py-24 bg-white border-t-8 border-primary-teal">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12">
-                    <h2 class="text-base text-secondary-orange font-semibold tracking-wide uppercase">Destination Guide</h2>
-                    <p class="mt-2 text-4xl font-extrabold text-primary-teal sm:text-5xl">
-                        Pura Vida: Costa Rica
-                    </p>
-                    <a href="index.html" class="inline-block mt-4 text-primary-teal underline text-lg font-semibold">&larr; Back to Home</a>
-                </div>
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
-                    <div class="lg:col-span-2 space-y-8">
-                        <h3 class="text-2xl font-bold text-dark-text border-b pb-2">Residency & Visa Pathways</h3>
-                        <p class="text-lg text-gray-700">Costa Rica offers a range of temporary and permanent residency visas for expats and investors:</p>
-                        <ul class="list-disc ml-6 space-y-3 text-gray-700">
-                            <li><strong>Pensionado (Retiree) Visa:</strong> Proof of lifetime pension/income ($1,000 USD monthly)</li>
-                            <li><strong>Rentista (Passive Income) Visa:</strong> Proof of $2,500 monthly income for 2 years or $60,000 deposit in a Costa Rican bank</li>
-                            <li><strong>Inversionista (Investor) Visa:</strong> Investment in Costa Rica, typically $150,000+ USD into property or business</li>
-                            <li><strong>Permanent Residency:</strong> Eligibility after 3 years of temporary residency or family ties (spouse/child are citizens)</li>
-                            <li><strong>Work Permit:</strong> Obtained if a Costa Rican company sponsors specialized foreign workers</li>
-                            <li><strong>Student Visa:</strong> For international students enrolled in recognized institutions</li>
-                            <li><strong>Marriage/Family Visa:</strong> Available to spouses, children, or immediate relatives of Costa Rican citizens/residents</li>
-                            <li><strong>Refugee/Asylee Status:</strong> Humanitarian protection for those meeting specific criteria</li>
-                            <li><strong>International/Remote Worker Visa:</strong> For those working online for companies outside Costa Rica (limited, new program)</li>
-                        </ul>
-                        <h3 class="text-2xl font-bold text-dark-text border-b pb-2 pt-6">Popular Expat Cities & Regions</h3>
-                        <div class="space-y-4">
-                            <p><strong>San José / Central Valley:</strong> The urban hub, offering the best healthcare, international schools, modern amenities, and cooler climates.</p>
-                            <p><strong>Tamarindo / Guanacaste (Pacific):</strong> Famous for its stunning beaches, surf culture, and a huge, active North American expat community. Hot and dry climate.</p>
-                            <p><strong>Dominical / Southern Pacific:</strong> Known for its lush rainforests, intense biodiversity, and a laid-back, eco-conscious lifestyle. Higher rainfall and more remote.</p>
-                        </div>
-                    </div>
-                    <div class="bg-primary-teal/10 p-6 rounded-xl shadow-lg">
-                        <h3 class="text-xl font-bold text-primary-teal mb-4">Cost of Living Estimate (Couple)</h3>
-                        <p class="text-4xl font-extrabold text-dark-text">$2,500 - $4,500 USD / month</p>
-                        <ul class="mt-4 space-y-2 text-sm text-gray-700">
-                            <li>High End: Living in a modern condo in Escazú or beachfront on the Gold Coast.</li>
-                            <li>Low End: Renting a local-style home (Tico-house) outside the major expat centers.</li>
-                            <li>Note: Prices for imported goods and gasoline can be high. Local produce and services are affordable.</li>
-                        </ul>
-                        <a href="index.html" class="mt-6 inline-block text-secondary-orange font-semibold hover:underline">Back to Home &rarr;</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-    <footer class="bg-gray-800 text-white mt-10">
-        <div class="max-w-7xl mx-auto py-8 px-4 text-center">
-            &copy; 2025 Autumn Point Relocation Solutions. All rights reserved.
-        </div>
-    </footer>
+<body>
+  <main class="wrap" aria-labelledby="title">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="shimmer" id="title">Pura Vida — Costa Rica</div>
+      <a href="index.html" style="margin-left:auto;color:var(--muted);text-decoration:none;font-weight:600">← Back</a>
+    </div>
+
+    <p class="intro">Costa Rica is known for its biodiversity, stable democracy, and popular retiree/residency programs. Below are the practical details many expats ask about.</p>
+
+    <div class="grid">
+      <section class="content" aria-labelledby="residency">
+        <h3 id="residency">Residency & Visa Pathways</h3>
+        <p class="muted">Most-used routes for foreigners:</p>
+        <ul>
+          <li><strong>Pensionado (Retiree):</strong> Requires a lifetime fixed income of at least <strong>$1,000 USD/mo</strong>.</li>
+          <li><strong>Rentista (Passive Income):</strong> Deposit <strong>$60,000 USD</strong> into a Costa Rican bank or show $2,500 USD/month for two years.</li>
+          <li>Permanent residency typically after ~3 years on these programs.</li>
+        </ul>
+
+        <h3 class="mt" style="margin-top:16px">Popular Expat Cities & Regions</h3>
+        <p><strong>San José / Central Valley:</strong> Best healthcare & schools.</p>
+        <p><strong>Guanacaste / Tamarindo:</strong> Beaches & large North American expat community.</p>
+        <p><strong>Southern Pacific (Dominical, Osa):</strong> Rainforest, remote living and ecotourism.</p>
+
+        <h3 style="margin-top:16px">Practical notes</h3>
+        <ul>
+          <li>Public healthcare (CCSS) available to residents; strong private hospitals in San José.</li>
+          <li>Property ownership allowed for foreigners; check coastal servitude regulations.</li>
+          <li>Spanish is the primary language; English common in tourist/expat hubs.</li>
+        </ul>
+      </section>
+
+      <aside class="card" aria-labelledby="cost">
+        <h3 id="cost" style="color:var(--accent)">Cost of Living Estimate (Couple)</h3>
+        <p style="font-size:1.6rem;font-weight:800;color:var(--dark)">$2,500 – $4,500 USD / month</p>
+        <ul style="margin-top:10px;color:#374151;font-size:0.95rem">
+          <li><strong>High end:</strong> Modern condo in Escazú or beachfront living.</li>
+          <li><strong>Low end:</strong> Local-style home outside expat centers.</li>
+        </ul>
+        <a href="#page-contact" class="cta">Start your Costa Rica Move →</a>
+      </aside>
+    </div>
+  </main>
 </body>
 </html>
