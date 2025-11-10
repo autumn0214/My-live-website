@@ -279,15 +279,11 @@
                 </div>
 
                 <div class="mt-16 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-8">
-  <!-- Costa Rica card -->
-  <div class="rounded-xl shadow-2xl overflow-hidden group transition duration-300 hover:scale-[1.02]">
-    <!-- top half: image (keeps original h-48 size) -->
-    <div class="w-full h-48 overflow-hidden">
-      <img class="w-full h-full object-cover transition duration-500 group-hover:opacity-80"
-           src="costarica.jpg"
-           alt="Lush green landscape of Costa Rica"
-           onerror="this.onerror=null; this.src='https://placehold.co/600x400/0d9488/ffffff?text=Costa+Rica+Pura+Vida'">
-    </div>
+  <!-- Costa Rica top half (background-image; focal point centered-top) -->
+<div class="w-full h-48 overflow-hidden bg-cover bg-center"
+     style="background-image: url('costarica.jpg'); background-position: center top;"
+     role="img" aria-label="Lush green landscape of Costa Rica">
+</div>
 
     <!-- content (unchanged layout/colors) -->
     <div class="p-6">
