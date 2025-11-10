@@ -232,12 +232,25 @@
 
     <main id="main-content">
         <section id="page-home" class="relative overflow-hidden pt-20 pb-20 sm:pt-24 sm:pb-32 lg:pt-32 lg:pb-40 flex items-center h-screen min-h-[500px]">
-            <div class="hero-video-container">
-                <video id="hero-video-bg" autoplay loop muted playsinline class="hero-video" preload="auto" onerror="this.classList.add('hidden'); document.getElementById('hero-fallback').classList.remove('hidden');">
-                    <source src="eal.mp4" type="video/mp4">
-                    </video>
-                <div id="hero-fallback" class="hero-video hidden bg-cover bg-center" style="background-image: url('https://placehold.co/1920x1080/0d9488/ffffff?text=Autumn+Point+Relocation');"></div>
-            </div>
+          <div class="hero-video-container">
+  <video id="hero-video-bg"
+         class="hero-video"
+         autoplay
+         loop
+         muted
+         playsinline
+         preload="auto"
+         poster="assets/images/hero-poster.jpg"
+         aria-hidden="true">
+    <source src="assets/videos/eal.mp4" type="video/mp4">
+    <!-- optional fallback source:
+    <source src="assets/videos/eal.webm" type="video/webm"> -->
+  </video>
+
+  <!-- Fallback background image if video fails or autoplay is blocked -->
+  <div id="hero-fallback" class="hero-video hidden bg-cover bg-center"
+       style="background-image: url('assets/images/hero-poster.jpg');"></div>
+</div>
 
             <div class="absolute inset-0 z-10 bg-black opacity-60"></div>
 
