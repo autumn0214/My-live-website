@@ -1,28 +1,28 @@
 <!-- assets/logo-symbol.svg -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-labelledby="apSymbolTitle">
-  <title id="apSymbolTitle">Autumn Point symbol — house arrow with leaf</title>
+  <title id="apSymbolTitle">Autumn Point symbol — arrow and leaf</title>
   <defs>
     <style>
-      .stroke { stroke: #0d9488; stroke-width:4; stroke-linejoin:round; stroke-linecap:round; fill:none; }
-      .leaf-fill { fill:#0d9488; }
+      .teal-stroke { stroke: #0d9488; stroke-width:4; stroke-linejoin:round; stroke-linecap:round; fill:none; }
+      .teal-fill { fill:#0d9488; }
+      .vein { stroke:#ffffff; stroke-width:1.6; stroke-linecap:round; fill:none; opacity:0.95 }
     </style>
   </defs>
 
-  <!-- Outer arrow/house outline -->
-  <path class="stroke" d="M60 12 L18 48 v36 a6 6 0 0 0 6 6 h72 a6 6 0 0 0 6-6 V48 L60 12 z" />
+  <!-- Arrow (outline only) -->
+  <!-- A simplified arrowhead + short shaft pointing up/right; no house outline -->
+  <path class="teal-stroke" d="M22 84 L60 46 L98 84 L78 84 L78 108 L44 108 L44 84 Z" />
 
-  <!-- Door cut (subtle, optional) -->
-  <rect x="54" y="70" width="12" height="18" rx="2" fill="none" stroke="#0d9488" stroke-width="2" opacity="0.12"/>
+  <!-- Leaf positioned inside the arrowhead -->
+  <path class="teal-fill" d="M FiftyFour 64
+    M48 70
+    C52 56, 74 50, 86 60
+    C88 62, 88 66, 86 70
+    C82 78, 68 90, 54 94
+    C50 95, 46 93, 46 89
+    C46 85, 46 80, 48 70 z"
+    transform="translate(0 -4)"/>
 
-  <!-- Full leaf (scaled to fit inside the house/arrow) -->
-  <path class="leaf-fill" d="M44 64
-      C50 52, 72 46, 84 54
-      C86 56, 86 60, 84 64
-      C80 72, 68 84, 54 90
-      C50 92, 46 90, 46 86
-      C46 82, 46 76, 44 64 z"/>
-
-  <!-- Leaf central vein (lighter cutout effect) -->
-  <path d="M54 66 C62 60, 70 60, 74 64" fill="none" stroke="#ffffff" stroke-width="2.0" stroke-linecap="round" opacity="0.85"/>
-
+  <!-- Leaf central vein (subtle light cut) -->
+  <path class="vein" d="M56 72 C64 66, 74 66, 78 70" />
 </svg>
