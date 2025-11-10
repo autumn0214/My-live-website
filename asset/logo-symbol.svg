@@ -1,28 +1,28 @@
-<!-- assets/logo-symbol.svg -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-labelledby="apSymbolTitle">
+<!-- assets/logo-symbol.svg
+     Extracted symbol (arrow + leaf) traced and cleaned from the full AutumnPointLogo.svg.
+     Color: primary teal (#0d9488). Use this file in headers as the compact symbol-only logo.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 140" role="img" aria-labelledby="apSymbolTitle">
   <title id="apSymbolTitle">Autumn Point symbol — arrow and leaf</title>
   <defs>
     <style>
-      .teal-stroke { stroke: #0d9488; stroke-width:4; stroke-linejoin:round; stroke-linecap:round; fill:none; }
-      .teal-fill { fill:#0d9488; }
-      .vein { stroke:#ffffff; stroke-width:1.6; stroke-linecap:round; fill:none; opacity:0.95 }
+      .teal-fill { fill: #0d9488; }
+      .teal-stroke { stroke: #0d9488; stroke-width:4; stroke-linecap:round; stroke-linejoin:round; fill:none; }
+      .vein { stroke:#ffffff; stroke-width:1.6; stroke-linecap:round; fill:none; opacity:0.95; }
     </style>
   </defs>
 
-  <!-- Arrow (outline only) -->
-  <!-- A simplified arrowhead + short shaft pointing up/right; no house outline -->
-  <path class="teal-stroke" d="M22 84 L60 46 L98 84 L78 84 L78 108 L44 108 L44 84 Z" />
+  <!-- Arrow head (open outline) -->
+  <path class="teal-stroke" d="M28 104 L80 44 L132 104 L104 104 L104 128 L56 128 L56 104 Z"/>
 
-  <!-- Leaf positioned inside the arrowhead -->
-  <path class="teal-fill" d="M FiftyFour 64
-    M48 70
-    C52 56, 74 50, 86 60
-    C88 62, 88 66, 86 70
-    C82 78, 68 90, 54 94
-    C50 95, 46 93, 46 89
-    C46 85, 46 80, 48 70 z"
-    transform="translate(0 -4)"/>
+  <!-- Leaf shape (filled) - extracted/cleaned trace matching original leaf proportions -->
+  <path class="teal-fill" d="M64 74
+    C70 58 92 52 108 62
+    C111 65 112 69 110 72
+    C104 82 92 96 76 104
+    C72 106 68 105 68 100
+    C68 96 68 88 64 74 Z"/>
 
-  <!-- Leaf central vein (subtle light cut) -->
-  <path class="vein" d="M56 72 C64 66, 74 66, 78 70" />
+  <!-- Leaf central vein (subtle highlight) -->
+  <path class="vein" d="M76 80 C86 74, 96 74, 102 78" />
 </svg>
