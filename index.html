@@ -436,50 +436,106 @@
             </div>
         </section>
 
-<section id="country-preview" style="max-width:1100px;margin:22px auto;padding:12px;">
+<section id="country-compare-teaser" class="py-12 bg-white">
   <style>
-    .preview-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:10px; align-items:stretch; }
-    .preview-card{ background:white;border-radius:12px;padding:12px;box-shadow:0 8px 20px rgba(15,23,42,0.06); transition: transform 220ms cubic-bezier(.2,.9,.3,1), box-shadow 220ms; text-align:center;}
-    .preview-card:hover{ transform: translateY(-8px); box-shadow: 0 18px 42px rgba(15,23,42,0.12); }
-    .preview-number{ font-weight:800; color:var(--primary-teal,#0d9488); font-size:1.1rem; }
-    .preview-note{ color:var(--muted,#6b7280); font-size:0.9rem; margin-top:6px; }
-    .see-more { display:inline-block; margin-top:14px; background:var(--secondary-orange,#ea580c); color:white; padding:10px 14px; border-radius:10px; text-decoration:none; font-weight:700; transition:transform 180ms, box-shadow 180ms; box-shadow:0 8px 20px rgba(234,88,12,0.12);}
-    .see-more:hover{ transform: translateY(-8px); box-shadow: 0 20px 40px rgba(234,88,12,0.16); }
-    @media (max-width:960px){ .preview-grid{ grid-template-columns:repeat(2,1fr); } }
-    @media (max-width:560px){ .preview-grid{ grid-template-columns:1fr; } }
+    :root{
+      --primary-teal:#0d9488;
+      --secondary-orange:#ea580c;
+      --dark-text:#1f2937;
+      --muted:#6b7280;
+      --card-radius:12px;
+    }
+    .teaser-wrap{ max-width:1100px; margin:0 auto; padding:0 16px; }
+    .teaser-head{ display:flex; gap:12px; align-items:baseline; margin-bottom:14px; }
+    .teaser-title{ font-weight:800; font-size:1.25rem; background:linear-gradient(90deg,var(--primary-teal),#00b7a1,var(--secondary-orange)); -webkit-background-clip:text; color:transparent; }
+    .teaser-sub{ margin-left:auto; color:var(--muted); font-size:0.95rem; }
+
+    .teaser-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; align-items:stretch; }
+    .teaser-card{
+      background:linear-gradient(180deg,#ffffff,#fbfeff);
+      border-radius:var(--card-radius);
+      padding:14px;
+      box-shadow:0 8px 20px rgba(15,23,42,0.06);
+      transition: transform 220ms cubic-bezier(.2,.9,.3,1), box-shadow 220ms;
+      border-top:4px solid rgba(13,148,136,0.06);
+    }
+    .teaser-card:hover{ transform: translateY(-10px); box-shadow:0 20px 48px rgba(15,23,42,0.12); }
+
+    .metric-label{ font-weight:700; color:var(--dark-text); margin-bottom:8px; font-size:0.95rem; }
+    .small-row{ display:flex; gap:8px; align-items:center; font-size:0.92rem; color:var(--muted); flex-wrap:wrap; }
+
+    .country-pill{ display:inline-flex; gap:8px; align-items:center; padding:6px 8px; border-radius:999px; background:#f6fbfa; font-weight:700; color:var(--dark-text); box-shadow:inset 0 -2px 0 rgba(0,0,0,0.02); }
+    .pill-cr{ border-left:6px solid #0b7f72; }
+    .pill-pa{ border-left:6px solid #c94c08; }
+    .pill-bz{ border-left:6px solid #d97706; }
+
+    .cta-row{ margin-top:14px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+    .see-more{ background:var(--primary-teal); color:#fff; padding:10px 14px; border-radius:10px; font-weight:700; text-decoration:none; box-shadow:0 10px 30px rgba(13,148,136,0.12); transition: transform 180ms; }
+    .see-more:hover{ transform: translateY(-8px); }
+
+    @media (max-width:980px){
+      .teaser-grid{ grid-template-columns:repeat(2,1fr); }
+    }
+    @media (max-width:560px){
+      .teaser-grid{ grid-template-columns:1fr; }
+      .teaser-sub{ display:none; }
+    }
   </style>
 
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
-    <div>
-      <h3 style="margin:0">Quick comparison</h3>
-      <p style="margin:4px 0 0;color:var(--muted,#6b7280)">Four key facts to help you decide — tap to explore the full chart.</p>
-    </div>
-    <a class="see-more" href="compare.html">See more</a>
-  </div>
-
-  <div class="preview-grid" role="list">
-    <div class="preview-card" role="listitem">
-      <div class="preview-number">$800</div>
-      <div style="font-weight:700;margin-top:6px">Cost (monthly excl. rent)</div>
-      <div class="preview-note">Typical single adult, expat areas</div>
+  <div class="teaser-wrap">
+    <div class="teaser-head">
+      <div>
+        <div class="teaser-title">Quick country snapshot</div>
+        <div style="color:var(--muted);font-size:0.95rem;margin-top:6px">Four short facts to help you decide — tap to view the full comparison.</div>
+      </div>
+      <div class="teaser-sub">Sourced from official government & international data</div>
     </div>
 
-    <div class="preview-card" role="listitem">
-      <div class="preview-number">High</div>
-      <div style="font-weight:700;margin-top:6px">Healthcare access</div>
-      <div class="preview-note">Public & private care varies by country</div>
+    <div class="teaser-grid" role="list" aria-label="Quick country comparison teaser">
+      <!-- Cost -->
+      <div class="teaser-card" role="listitem" aria-label="Typical monthly costs">
+        <div class="metric-label">Typical monthly cost (excl. rent)</div>
+        <div class="small-row">
+          <div class="country-pill pill-cr">Costa Rica — <span style="margin-left:6px;color:var(--primary-teal)">$800–$1,200</span></div>
+          <div class="country-pill pill-pa">Panama — <span style="margin-left:6px;color:var(--secondary-orange)">$750–$1,150</span></div>
+          <div class="country-pill pill-bz">Belize — <span style="margin-left:6px;color:#d97706">$900–$1,400</span></div>
+        </div>
+      </div>
+
+      <!-- Healthcare -->
+      <div class="teaser-card" role="listitem" aria-label="Healthcare access">
+        <div class="metric-label">Access to high-quality healthcare</div>
+        <div class="small-row">
+          <div class="country-pill pill-cr">Costa Rica — <span style="margin-left:6px;color:var(--primary-teal)">✔︎ Public & private</span></div>
+          <div class="country-pill pill-pa">Panama — <span style="margin-left:6px;color:var(--primary-teal)">✔︎ Modern private</span></div>
+          <div class="country-pill pill-bz">Belize — <span style="margin-left:6px;color:#be123c">✖︎ Partial</span></div>
+        </div>
+      </div>
+
+      <!-- Expat Community -->
+      <div class="teaser-card" role="listitem" aria-label="Expat community">
+        <div class="metric-label">Large expat community</div>
+        <div class="small-row">
+          <div class="country-pill pill-cr">Costa Rica — <span style="margin-left:6px;color:var(--primary-teal)">✔︎ Strong hubs</span></div>
+          <div class="country-pill pill-pa">Panama — <span style="margin-left:6px;color:var(--secondary-orange)">✔︎ City & islands</span></div>
+          <div class="country-pill pill-bz">Belize — <span style="margin-left:6px;color:#d97706">✔︎ Smaller hubs</span></div>
+        </div>
+      </div>
+
+      <!-- Biodiversity -->
+      <div class="teaser-card" role="listitem" aria-label="Biodiversity and rainforest">
+        <div class="metric-label">Unique biodiversity & rainforest</div>
+        <div class="small-row">
+          <div class="country-pill pill-cr">Costa Rica — <span style="margin-left:6px;color:var(--primary-teal)">✔︎ Extensive parks</span></div>
+          <div class="country-pill pill-pa">Panama — <span style="margin-left:6px;color:var(--secondary-orange)">✔︎ Rainforest & canal</span></div>
+          <div class="country-pill pill-bz">Belize — <span style="margin-left:6px;color:#d97706">✔︎ Reef & mangroves</span></div>
+        </div>
+      </div>
     </div>
 
-    <div class="preview-card" role="listitem">
-      <div class="preview-number">✔︎</div>
-      <div style="font-weight:700;margin-top:6px">Expat community</div>
-      <div class="preview-note">Strong hubs for easier integration</div>
-    </div>
-
-    <div class="preview-card" role="listitem">
-      <div class="preview-number">✔︎</div>
-      <div style="font-weight:700;margin-top:6px">Biodiversity</div>
-      <div class="preview-note">Rainforest, coasts & reefs</div>
+    <div class="cta-row">
+      <div style="color:var(--muted);font-size:0.92rem">Numbers are concise 2024 estimates for typical expat/tourist areas. For full details, view the complete comparison.</div>
+      <a class="see-more" href="compare.html" aria-label="See full country comparison">See full comparison →</a>
     </div>
   </div>
 </section>
