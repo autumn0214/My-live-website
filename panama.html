@@ -7,35 +7,42 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root{
-      --primary-teal: #0d9488;
-      --secondary-orange: #ea580c;
-      --danger-red: #be123c;
-      --dark-text: #1f2937;
-      --muted: #6b7280;
+      --accent:#ea580c;
+      --primary-teal:#0d9488;
+      --dark-text:#1f2937;
+      --muted:#6b7280;
     }
-    .tint-primary { background: rgba(13,148,136,0.05); } /* subtle page tint like your snippet */
+    .tint-primary { background: rgba(13,148,136,0.05); }
     .tint-secondary { background: rgba(234,88,12,0.08); }
-    .card-border-secondary{ border-top: 4px solid var(--secondary-orange); }
-    .section-border-secondary{ border-top: 8px solid var(--secondary-orange); }
+    .card-border-secondary{ border-top: 4px solid var(--accent); }
+    .section-border-secondary{ border-top: 8px solid var(--accent); }
+    .site-logo-img { height:52px; width:auto; object-fit:contain; }
+    @media (min-width:1024px){ .site-logo-img{ height:64px; } }
   </style>
 </head>
 <body class="font-sans text-dark-text bg-white">
+  <!-- Header: site logo (if present) left + other country links top-right -->
   <header class="sticky top-0 z-40 bg-white border-b">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-      <a href="index.html" class="text-xl font-bold" style="color:var(--primary-teal)">Autumn Point</a>
+      <a href="index.html" class="flex items-center gap-3">
+        <!-- If you saved the SVG at assets/AutumnPointLogo.svg it will appear; otherwise the text fallback shows -->
+        <img src="assets/AutumnPointLogo.svg" alt="AutumnPoint" class="site-logo-img" onerror="this.style.display='none'">
+        <span class="text-xl font-bold" style="color:var(--primary-teal)">Autumn Point</span>
+      </a>
+
       <nav>
-        <a href="costarica.html" class="text-base font-medium text-gray-700 hover:text-secondary-orange mx-2">Costa Rica</a>
-        <a href="belize.html" class="text-base font-medium text-gray-700 hover:text-secondary-orange mx-2">Belize</a>
+        <a href="costarica.html" class="text-base font-medium text-gray-700 hover:text-[#ea580c] mx-2">Costa Rica</a>
+        <a href="belize.html" class="text-base font-medium text-gray-700 hover:text-[#ea580c] mx-2">Belize</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section id="page-panama" class="py-16 sm:py-24 tint-primary section-border-secondary" style="border-top-color:var(--secondary-orange);">
+    <section id="page-panama" class="py-16 sm:py-24 tint-primary section-border-secondary" style="border-top-color:var(--accent);">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
           <h2 class="text-base text-primary-teal font-semibold tracking-wide uppercase">Destination Guide</h2>
-          <p class="mt-2 text-4xl font-extrabold text-secondary-orange sm:text-5xl" style="color:var(--secondary-orange)">
+          <p class="mt-2 text-4xl font-extrabold text-secondary-orange sm:text-5xl" style="color:var(--accent)">
             Global Hub: Panama
           </p>
         </div>
@@ -43,41 +50,73 @@
         <div class="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-10">
           <div class="lg:col-span-2 space-y-8">
             <h3 class="text-2xl font-bold text-dark-text border-b pb-2">Residency & Visa Pathways</h3>
-            <p class="text-lg text-gray-700">Panama is famous for its tax-friendly environment and streamlined visas. The most popular paths are:</p>
-            <ul class="list-disc ml-6 space-y-3 text-gray-700">
-              <li><strong>Pensionado (Retiree) Visa:</strong> Requires a lifetime monthly income of at least <strong>$1,000 USD</strong> (or $1,250 if applying with a spouse). Provides significant discounts on entertainment, travel, and medical services.</li>
-              <li><strong>Friendly Nations Visa (Suspended/Modified):</strong> Previously popular, this path has been frequently updated. We help clients navigate current investment or employment-based avenues that have replaced it.</li>
-              <li><strong>Digital Nomad Visa:</strong> A new temporary option for remote workers, requiring a minimum monthly income of <strong>$3,000 USD</strong>.</li>
+            <p class="text-lg text-gray-700">Panama offers a range of residency and temporary visa categories. The list below summarizes commonly used routes — check the Servicio Nacional de Migración (migracion.gob.pa) for official forms and the latest documentary requirements.</p>
+
+            <ul class="list-disc ml-6 space-y-2 text-gray-700">
+              <li><strong>Pensionado (Retiree)</strong> — Proof of lifetime pension income; commonly cited minimum ~<strong>$1,000 USD/month</strong>. Provides discounts and resident benefits; documented evidence of pension required.</li>
+
+              <li><strong>Friendly Nations / Residency (policy updated)</strong> — Historically an accelerated residency route for citizens of "friendly" countries; policy and processing have changed over time and may require a qualifying employment offer or investment — consult the official Panama migration pages for current exact requirements.</li>
+
+              <li><strong>Investment / Business (Inversionista)</strong> — Residency via qualifying investment in business or real estate. Minimum thresholds and acceptable investment types vary; official guidance and supporting documentation required.</li>
+
+              <li><strong>Work / Employment</strong> — Employer-sponsored work permits and temporary residency for specialized personnel. Employer petitions to migration authorities and Social Security (CSS) registration are typically required.</li>
+
+              <li><strong>Digital Nomad / Remote Worker</strong> — Panama has introduced temporary visas/permits for remote workers or digital nomads; income thresholds and documentation differ by program — check official government announcements for the current scheme and eligibility (proof of remote employment, income, insurance, etc.).</li>
+
+              <li><strong>Student</strong> — For international students enrolled in recognized Panamanian institutions; requires enrollment confirmation and proof of financial means for the period of study.</li>
+
+              <li><strong>Family / Marriage</strong> — Residency avenues for spouses and dependent children of Panamanian citizens or residents; supporting civil documents and translations/apostilles usually required.</li>
+
+              <li><strong>Permanent Residency</strong> — May follow multiple years of qualifying temporary residency or be available through family ties; specific timelines and documentation are set by migration rules.</li>
+            </ul>
+
+            <h3 class="text-2xl font-bold text-dark-text border-b pb-2 pt-6">Practical requirements & process notes</h3>
+            <ul class="list-disc ml-6 mt-3 text-gray-700 space-y-2">
+              <li>Common documentation: apostilled birth/marriage certificates, criminal background checks (no older than specified by migration), proof of income or pension, bank statements, and authenticated translations where needed.</li>
+              <li>Many residence categories require in-country steps (appointments, document verifications, fingerprinting) — use Servicio Nacional de Migración (migracion.gob.pa) and official consular guidance.</li>
             </ul>
 
             <h3 class="text-2xl font-bold text-dark-text border-b pb-2 pt-6">Popular Expat Cities & Regions</h3>
-            <div class="space-y-4">
-              <p><strong>Panama City:</strong> A vibrant, modern metropolitan hub with skyscrapers, excellent international banking, and world-class healthcare. Highest cost of living.</p>
-              <p><strong>Boquete (Chiriquí Highlands):</strong> Located in the mountains, offering a mild, spring-like climate, lush greenery, and a very large, active retiree expat community.</p>
-              <p><strong>Coronado / Pacific Beaches:</strong> A string of beach communities popular with expats, featuring gated communities, resorts, and a more relaxed lifestyle than the city.</p>
+            <div class="space-y-3 text-gray-800">
+              <p><strong>Panama City:</strong> The country's modern hub with international banking, best private healthcare, and highest connectivity.</p>
+              <p><strong>Boquete (Chiriquí Highlands):</strong> Mountain town with mild climate and a large retiree community.</p>
+              <p><strong>Coronado / Pacific Beaches:</strong> Popular beach communities offering gated developments and relaxed coastal living.</p>
             </div>
+
+            <h3 class="text-2xl font-bold text-dark-text border-b pb-2 pt-6">Healthcare, Internet & Practical Notes</h3>
+            <ul class="list-disc ml-6 mt-3 text-gray-700 space-y-2">
+              <li>Private hospitals in Panama City provide high-quality specialist care; private insurance costs vary (est. <strong>$70–$220+/month</strong> depending on coverage and age).</li>
+              <li>Internet: typical urban residential speeds often range <strong>40–150 Mbps</strong>.</li>
+              <li>Territorial tax system — Panama generally taxes Panama-sourced income; foreign-sourced income can be exempt depending on structure and current regulation.</li>
+            </ul>
+
+            <h3 class="text-2xl font-bold text-dark-text border-b pb-2 pt-6">Official sources</h3>
+            <ul class="list-disc ml-6 mt-3 text-gray-700">
+              <li><a href="https://www.migracion.gob.pa/" class="text-primary-teal underline">Servicio Nacional de Migración (Panama)</a></li>
+              <li><a href="https://www.gob.pa/" class="text-primary-teal underline">Panama Government Portal</a></li>
+            </ul>
           </div>
 
-          <!-- cost card with secondary orange tint per your snippet -->
-          <div class="p-6 rounded-xl shadow-lg card-border-secondary tint-secondary" style="border-top-color:var(--secondary-orange);">
-            <h3 class="text-xl font-bold" style="color:var(--secondary-orange)">Cost of Living Estimate (Couple)</h3>
+          <aside class="p-6 rounded-xl shadow-lg card-border-secondary tint-secondary" style="border-top-color:var(--accent);">
+            <h3 class="text-xl font-bold" style="color:var(--accent)">Cost of Living Estimate (Couple)</h3>
             <p class="text-4xl font-extrabold text-dark-text mt-4">$2,200 - $4,000 USD / month</p>
             <ul class="mt-4 space-y-2 text-sm text-gray-700">
-              <li><strong>High End:</strong> Living downtown in Panama City, using the best private hospitals and dining out often.</li>
-              <li><strong>Low End:</strong> Living in smaller towns or outside the city core, relying more on local markets.</li>
-              <li><strong>Tax Benefit:</strong> Panama uses a territorial tax system, meaning income earned outside Panama is generally not taxed.</li>
+              <li><strong>High end:</strong> Panama City downtown living with private hospitals and frequent dining out.</li>
+              <li><strong>Low end:</strong> Smaller towns or outside the city core relying on local markets.</li>
+              <li><strong>Note:</strong> Territorial tax rules can favor some foreign income; consult an advisor.</li>
             </ul>
-            <a href="#page-contact" class="mt-6 inline-block text-primary-teal font-semibold hover:underline">Start your Panama Move &rarr;</a>
-          </div>
+            <a href="get-started.html" class="mt-6 inline-block text-primary-teal font-semibold hover:underline">Get started — Book consultation &rarr;</a>
+          </aside>
         </div>
       </div>
     </section>
 
+    <!-- Bottom: Back to Home (left) + quick country links (right) -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 flex items-center justify-between">
       <a href="index.html" class="text-sm text-gray-700 underline">&larr; Back to Home</a>
       <div class="space-x-4">
-        <a href="costarica.html" class="text-sm text-gray-700 hover:text-secondary-orange">Costa Rica guide</a>
-        <a href="belize.html" class="text-sm text-gray-700 hover:text-secondary-orange">Belize guide</a>
+        <a href="costarica.html" class="text-sm text-gray-700 hover:text-[#ea580c]">Costa Rica guide</a>
+        <a href="belize.html" class="text-sm text-gray-700 hover:text-[#ea580c]">Belize guide</a>
       </div>
     </div>
   </main>
