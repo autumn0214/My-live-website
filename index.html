@@ -167,23 +167,35 @@
     </a>
   </div>
 
-               <div class="hidden md:flex items-center lg:ml-4">
-  <div class="relative group">
-    <button id="main-menu-button"
-            aria-expanded="false"
-            aria-label="Open menu"
-            class="inline-flex items-center p-2 rounded-md text-gray-700 hover:text-secondary-orange focus:outline-none"
-            tabindex="0">
+  <!-- Desktop nav (optional) - hidden on small screens -->
+  <nav class="hidden md:flex items-center space-x-6">
+    <div class="relative group">
+      <button aria-expanded="false" id="destinations-button" class="inline-flex items-center text-base font-medium text-gray-700 hover:text-secondary-orange focus:outline-none" tabindex="0">
+        Destinations
+        <svg class="ml-2 h-4 w-4 text-gray-500 group-hover:text-secondary-orange" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <div class="absolute left-0 mt-1 w-48 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 opacity-0 invisible pointer-events-none transform translate-y-1 transition ease-out duration-150 group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:pointer-events-auto group-focus-within:translate-y-0" role="menu" aria-labelledby="destinations-button">
+        <a href="costarica.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50" role="menuitem">Costa Rica</a>
+        <a href="panama.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50" role="menuitem">Panama</a>
+        <a href="belize.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50" role="menuitem">Belize</a>
+      </div>
+    </div>
 
+    <a href="#page-packages" class="text-base font-medium text-gray-700 hover:text-secondary-orange">Packages</a>
+    <a href="#page-matchmaker" class="text-base font-medium text-gray-700 hover:text-secondary-orange">Matchmaker</a>
+    <a href="#page-residency" class="text-base font-medium text-gray-700 hover:text-secondary-orange">Residency Info</a>
+    <a href="#page-about" class="text-base font-medium text-gray-700 hover:text-secondary-orange">About Us</a>
+  </nav>
 
- <!-- Spacer pushes the menu controls to the far right -->
+  <!-- Spacer pushes the menu controls to the far right -->
   <div class="flex-1"></div>
 
   <!-- Right-side controls: desktop hamburger and mobile button -->
   <div class="flex items-center">
-      
-    <!-- Hamburger icon (three stripes) -->
-       <div class="hidden md:flex items-center lg:ml-4">
+    <!-- Desktop: hamburger that opens the right-anchored dropdown (hidden on small screens) -->
+    <div class="hidden md:flex items-center lg:ml-4">
       <div class="relative group">
         <button id="main-menu-button" aria-expanded="false" aria-label="Open menu" class="inline-flex items-center p-2 rounded-md text-gray-700 hover:text-secondary-orange focus:outline-none" tabindex="0">
           <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -191,28 +203,26 @@
           </svg>
           <span class="sr-only">Open menu</span>
         </button>
-    <div class="absolute right-0 mt-2 w-64 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5
-             opacity-0 invisible pointer-events-none transform translate-y-1 transition ease-out duration-150
-             group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto group-hover:translate-y-0
-             group-focus-within:opacity-100 group-focus-within:visible group-focus-within:pointer-events-auto group-focus-within:translate-y-0"
-      role="menu"
-      aria-labelledby="main-menu-button">
 
-      <div class="px-3 py-2 border-b border-gray-100 text-sm font-semibold text-gray-600">Destinations</div>
-      <a href="costarica.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 focus:bg-gray-50" role="menuitem" tabindex="0">Costa Rica</a>
-      <a href="panama.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 focus:bg-gray-50" role="menuitem" tabindex="0">Panama</a>
-      <a href="belize.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 focus:bg-gray-50" role="menuitem" tabindex="0">Belize</a>
-      <div class="mt-2 border-t border-gray-100"></div>
-      <a href="#page-packages" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 focus:bg-gray-50" role="menuitem" tabindex="0">Packages</a>
-      <a href="#page-matchmaker" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 focus:bg-gray-50" role="menuitem" tabindex="0">Matchmaker</a>
-      <a href="#page-residency" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 focus:bg-gray-50" role="menuitem" tabindex="0">Residency Info</a>
-      <a href="#page-about" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 focus:bg-gray-50" role="menuitem" tabindex="0">About Us</a>
-      <div class="mt-2 border-t border-gray-100"></div>
-      <a href="#page-login" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 focus:bg-gray-50" role="menuitem" tabindex="0">Client Login</a>
-      <a href="#page-contact" class="block px-4 py-2 text-white bg-primary-teal hover:bg-secondary-orange rounded-b-lg text-center mx-3 my-3 py-2 font-semibold" role="menuitem" tabindex="0">Get Started</a>
+        <div class="absolute right-0 mt-2 w-64 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 opacity-0 invisible pointer-events-none transform translate-y-1 transition ease-out duration-150 group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:pointer-events-auto group-focus-within:translate-y-0" role="menu" aria-labelledby="main-menu-button">
+          <div class="px-3 py-2 border-b border-gray-100 text-sm font-semibold text-gray-600">Destinations</div>
+          <a href="costarica.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50" role="menuitem">Costa Rica</a>
+          <a href="panama.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50" role="menuitem">Panama</a>
+          <a href="belize.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50" role="menuitem">Belize</a>
+          <div class="mt-2 border-t border-gray-100"></div>
+          <a href="#page-packages" class="block px-4 py-2 text-gray-700 hover:bg-gray-50" role="menuitem">Packages</a>
+          <a href="#page-matchmaker" class="block px-4 py-2 text-gray-700 hover:bg-gray-50" role="menuitem">Matchmaker</a>
+          <a href="#page-residency" class="block px-4 py-2 text-gray-700 hover:bg-gray-50" role="menuitem">Residency Info</a>
+          <a href="#page-about" class="block px-4 py-2 text-gray-700 hover:bg-gray-50" role="menuitem">About Us</a>
+          <div class="mt-2 border-t border-gray-100"></div>
+          <a href="#page-login" class="block px-4 py-2 text-gray-700 hover:bg-gray-50" role="menuitem">Client Login</a>
+          <a href="#page-contact" class="block px-4 py-2 text-white bg-primary-teal hover:bg-secondary-orange rounded-b-lg text-center mx-3 my-3 py-2 font-semibold" role="menuitem">Get Started</a>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+
+    <!-- Mobile menu button (visible on small screens) -->
+    <div class="-mr-2 -my-2 md:hidden">
       <button type="button" id="menu-button" onclick="toggleMenu()" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none">
         <span class="sr-only">Open menu</span>
         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
