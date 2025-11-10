@@ -1,0 +1,12 @@
+<!-- assets/logo-wordmark.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 200" width="900" height="200" role="img" aria-labelledby="logoWordmarkTitle">
+  <title id="logoWordmarkTitle">AutumnPoint wordmark</title>
+
+  <!-- Background transparent by default -->
+
+  <!-- Wordmark text. Replace font-family to your exact font locally and convert to outlines for exact match. -->
+  <text x="20" y="120" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="96" fill="#0d9488">AUTUMNPOINT</text>
+
+  <!-- Subtitle -->
+  <text x="22" y="172" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="22" letter-spacing="4" fill="#6b7280">RELOCATION SOLUTIONS</text>
+</svg>
