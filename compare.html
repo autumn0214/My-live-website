@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Compare Countries — Costa Rica, Panama, Belize</title>
+  <style>
+    :root{
+      --primary-teal:#0d9488;
+      --secondary-orange:#ea580c;
+      --dark-text:#1f2937;
+      --muted:#6b7280;
+      --bg:#ffffff;
+      --card-radius:12px;
+      --lift-shadow: 0 12px 28px rgba(15,23,42,0.14);
+      --soft-shadow: 0 8px 20px rgba(15,23,42,0.06);
+    }
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;color:var(--dark-text);background:linear-gradient(180deg, #f7f9f9, #ffffff);}
+    .page {
+      max-width:1100px;
+      margin:28px auto;
+      padding:18px;
+    }
+
+    /* Animated shimmer heading */
+    .shimmer-wrap{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:8px;
+    }
+    .shimmer {
+      font-size:1.6rem;
+      font-weight:800;
+      background: linear-gradient(90deg, var(--primary-teal), #00b7a1, var(--secondary-orange));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      position:relative;
+      overflow: hidden;
+    }
+    .shimmer::after{
+      content:'';
+      position:absolute;
+      left:-40%;
+      top:0;
+      width:60%;
+      height:100%;
+      background: linear-gradient(90deg, rgba(255,255,255,0.0), rgba(255,255,255,0.35), rgba(255,255,255,0.0));
+      transform: skewX(-20deg);
+      animation: glide 3s linear infinite;
+    }
+    @keyframes glide { 0% { left:-60%; } 100% { left:120%; } }
+
+    .intro{
+      color:var(--muted);
+      font-size:1rem;
+      margin-bottom:18px;
+      line-height:1.5;
+      background: linear-gradient(180deg, rgba(13,148,136,0.02), rgba(234,88,12,0.01));
+      padding:12px;
+      border-radius:10px;
+      box-shadow:var(--soft-shadow);
+    }
+
+    /* Lift-off CTA button */
+    .cta {
+      background:var(--primary-teal);
+      color:white;
+      padding:10px 14px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:700;
+      display:inline-block;
+      transition: transform 180ms cubic-bezier(.2,.9,.3,1), box-shadow 180ms;
+      box-shadow: 0 6px 14px rgba(13,148,136,0.18);
+    }
+    .cta:hover{
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: var(--lift-shadow);
+    }
+
+    /* Reuse the chart styling from component */
+    .country-chart{
+      margin-top:16px;
+      padding:18px;
+      background:linear-gradient(180deg, rgba(13,148,136,0.04), rgba(234,88,12,0.02));
+      border-radius:var(--card-radius);
+      box-shadow:var(--soft-shadow);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:220px repeat(3,1fr);
+      gap:10px;
+      align-items:stretch;
+    }
+    .col-header{
+      padding:12px 14px;
+      font-weight:700;
+      background:linear-gradient(90deg, rgba(13,148,136,0.06), rgba(234,88,12,0.03));
+      border-radius:10px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .row-label{ padding:12px 14px; background:var(--bg); color:var(--muted); border-radius:8px;}
+    .cell{ padding:12px 14px; background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.95)); border-radius:8px; font-size:0.95rem; display:flex; align-items:center; gap:8px; }
+    .flag-dot{ width:14px;height:14px;border-radius:4px;box-shadow:0 2px 6px rgba(15,23,42,0.08); }
+    .cr .flag-dot{ background: linear-gradient(135deg,#0d9488,#0b7f72); }
+    .pa .flag-dot{ background: linear-gradient(135deg,#ea580c,#c94c08); }
+    .bz .flag-dot{ background: linear-gradient(135deg,#f59e0b,#d97706); }
+    .check-yes{ color:var(--primary-teal); font-weight:700; }
+    .check-no{ color:var(--danger-red,#be123c); font-weight:700; }
+
+    /* Responsive */
+    @media (max-width:880px){ .grid{ grid-template-columns:1fr; } .row-label{ display:none; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div style="display:flex;gap:14px;align-items:center;">
+      <div class="shimmer-wrap">
+        <div class="shimmer">Compare Countries</div>
+      </div>
+      <a class="cta" href="#chart">View chart</a>
+    </div>
+
+    <p class="intro">
+      Welcome — this chart is a friendly, fact-based snapshot designed to help you decide which of Costa Rica, Panama, or Belize might suit your next chapter.
+      Use it as a starting point: look at cost figures, healthcare access, visa options and other practical checks, then follow up with the
+      official government pages for the specifics of tax, residency and health plans. We're glad you're exploring — choosing a country is as much about feelings as facts, and this comparison blends both.
+    </p>
+
+    <!-- Full chart -->
+    <section id="chart" class="country-chart" role="region" aria-label="Country comparison chart">
+      <div class="grid" role="table">
+        <div class="col-header" aria-hidden="true">Category</div>
+        <div class="col-header cr"><div style="display:flex;gap:10px;align-items:center"><div class="flag-dot"></div><div><strong>Costa Rica</strong></div></div></div>
+        <div class="col-header pa"><div style="display:flex;gap:10px;align-items:center"><div class="flag-dot"></div><div><strong>Panama</strong></div></div></div>
+        <div class="col-header bz"><div style="display:flex;gap:10px;align-items:center"><div class="flag-dot"></div><div><strong>Belize</strong></div></div></div>
+
+        <!-- Rows (condensed version of full chart) -->
+        <div class="row">
+          <div class="row-label">Monthly cost (single, excl. rent)</div>
+          <div class="cell">$800 <span style="color:var(--muted);font-size:0.85rem;margin-left:6px">estimate</span></div>
+          <div class="cell">$780 <span style="color:var(--muted);font-size:0.85rem;margin-left:6px">estimate</span></div>
+          <div class="cell">$950 <span style="color:var(--muted);font-size:0.85rem;margin-left:6px">estimate</span></div>
+        </div>
+
+        <div class="row">
+          <div class="row-label">Access to high-quality healthcare</div>
+          <div class="cell"><span class="check-yes">✔︎</span><span style="color:var(--muted);font-size:0.85rem;margin-left:6px">Public & private hospitals</span></div>
+          <div class="cell"><span class="check-yes">✔︎</span><span style="color:var(--muted);font-size:0.85rem;margin-left:6px">Modern private hospitals</span></div>
+          <div class="cell"><span class="check-no">✖︎/Partial</span><span style="color:var(--muted);font-size:0.85rem;margin-left:6px">Limited specialists outside towns</span></div>
+        </div>
+
+        <div class="row">
+          <div class="row-label">Tax incentives for passive foreign income</div>
+          <div class="cell"><span class="check-no">✖︎</span><span style="color:var(--muted);font-size:0.85rem;margin-left:6px">No broad exemption; check treaties & rules</span></div>
+          <div class="cell"><span class="check-yes">✔︎</span><span style="color:var(--muted);font-size:0.85rem;margin-left:6px">Territorial rules can favor some foreign income</span></div>
+          <div class="cell"><span class="check-yes">✔︎ (Conditional)</span><span style="color:var(--muted);font-size:0.85rem;margin-left:6px">Depends on residency & structure</span></div>
+        </div>
+
+        <div class="row">
+          <div class="row-label">Unique biodiversity & rainforest</div>
+          <div class="cell"><span class="check-yes">✔︎</span><span style="color:var(--muted);font-size:0.85rem;margin-left:6px">Extensive national parks & cloud forests</span></div>
+          <div class="cell"><span class="check-yes">✔︎</span><span style="color:var(--muted);font-size:0.85rem;margin-left:6px">Rainforests & canal watershed</span></div>
+          <div class="cell"><span class="check-yes">✔︎</span><span style="color:var(--muted);font-size:0.85rem;margin-left:6px">Barrier reef & pockets of rainforest</span></div>
+        </div>
+
+        <!-- Add more rows as needed (residency, LGBTQ+, expat community, etc.) — keep consistent layout -->
+      </div>
+
+      <div style="margin-top:12px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap">
+        <div style="color:var(--muted);font-size:0.9rem">
+          Notes: numbers are high-level 2024 estimates for a single adult in typical expat locations. For taxes, residency or health-care enrollment use official government sites.
+        </div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <a class="cta" href="index.html">Back home</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
