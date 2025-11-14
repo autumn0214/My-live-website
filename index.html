@@ -246,7 +246,6 @@
       const panelClose = document.getElementById('panelCloseBtn');
       const yearEl = document.getElementById('year');
 
-      // set year
       if (yearEl) yearEl.textContent = new Date().getFullYear();
 
       function openPanel() {
@@ -272,14 +271,16 @@
         closeIcon.classList.add('hidden');
       }
 
-      openBtn.addEventListener('click', function (e) {
+      openBtn.addEventListener('click', function () {
         const expanded = openBtn.getAttribute('aria-expanded') === 'true';
-        if (expanded) {
-          closePanel();
-        } else {
-          openPanel();
-        }
+        if (expanded) closePanel();
+        else openPanel();
       });
+
+      panelClose.addEventListener('click', closePanel);
+      overlay.addEventListener('click', closePanel);
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePanel(); });
+    }
 
       // close controls
       panelClose.addEventListener('click', closePanel);
