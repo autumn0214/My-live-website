@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shimmer test</title>
+  <style>
+    :root{
+      --primary-teal:#0d9488;
+      --secondary-orange:#ea580c;
+      --danger-red:#be123c;
+      --dark-text:#1f2937;
+      --muted:#6b7280;
+    }
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; padding:24px; background:#fff; color:var(--dark-text); }
+
+    /* Stronger, header-scoped shimmer styles with fade-in + delay */
+    header nav a.shimmer {
+      display: inline-block;
+      margin-left: 12px;
+      text-decoration: none;
+      background: linear-gradient(
+        90deg,
+        rgba(13,148,136,0.95) 0%,
+        rgba(255,255,255,0.92) 45%,
+        rgba(13,148,136,0.95) 100%
+      );
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      opacity: 0;
+      animation:
+        shimmer-fadein 360ms ease forwards,
+        shimmer-move 2s linear 600ms infinite;
+    }
+    header nav a.shimmer:hover, header nav a.shimmer:focus {
+      animation-play-state: paused;
+      -webkit-text-fill-color: currentColor;
+      color: inherit;
+    }
+    @keyframes shimmer-fadein {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes shimmer-move {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      header nav a.shimmer {
+        animation: none;
+        -webkit-text-fill-color: currentColor;
+        color: inherit;
+        background: none;
+        opacity: 1;
+      }
+    }
+
+    /* Small header layout like your site */
+    header { position: sticky; top: 0; background:#fff; border-bottom:1px solid #e5e7eb; padding:16px 0; }
+    .max-w { max-width:1024px; margin:0 auto; padding:0 16px; display:flex; align-items:center; justify-content:space-between; }
+    .site-logo { display:flex; align-items:center; gap:12px; }
+    .site-logo img { height:48px; width:auto; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="max-w">
+      <a class="site-logo" href="index.html">
+        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 30'><rect width='100' height='30' fill='%230d9488'/><text x='8' y='20' font-family='Arial' font-size='12' fill='white'>AutumnPoint</text></svg>" alt="logo">
+        <span style="font-weight:700;color:#0d9488">Autumn Point</span>
+      </a>
+      <nav>
+        <a href="costarica.html">Costa Rica</a>
+        <a href="panama.html">Panama</a>
+        <a href="belize.html">Belize</a>
+      </nav>
+    </div>
+  </header>
+
+  <main style="margin-top:32px">
+    <p>This test shows the shimmer applied by JavaScript only to the header links that point to other destination pages.</p>
+    <p>Open DevTools Console if the shimmer doesn't appear and follow the debugging commands in the instructions below.</p>
+  </main>
+
+  <script>
+    // Test JS: finds header nav links and adds .shimmer to links pointing to other pages (excludes current)
+    (function () {
+      const destinationPages = ['costarica.html', 'panama.html', 'belize.html'];
+      const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+      // Select header nav anchors only
+      const anchors = document.querySelectorAll('header nav a[href$=".html"]');
+      anchors.forEach(a => {
+        const hrefFile = a.getAttribute('href').split('/').pop().toLowerCase();
+        // skip logo-like items (none here), only add shimmer to destination links that are not the current
+        if (destinationPages.includes(hrefFile) && hrefFile !== current) {
+          a.classList.add('shimmer');
+        } else {
+          a.classList.remove('shimmer');
+        }
+      });
+
+      // Debug-log so you can see what ran
+      console.log('Shimmer script ran. Current page:', current);
+      anchors.forEach(a => console.log('link:', a.getAttribute('href'), 'has shimmer?', a.classList.contains('shimmer')));
+    })();
+  </script>
+</body>
+</html>
