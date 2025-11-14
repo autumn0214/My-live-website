@@ -1,49 +1,54 @@
-/* Shimmer text effect with a short fade-in before the moving shimmer starts */
+/* Shimmer text effect — slower, multi-color, bold text, with a short fade-in.
+   Reduced-motion friendly. Apply .shimmer to any <a> to get the effect.
+*/
 .shimmer {
-  /* gradient used as the text fill */
+  display: inline-block;
+  font-weight: 800; /* thick text like your comparison page */
+  text-decoration: none;
+
+  /* multi-color gradient */
   background: linear-gradient(
     90deg,
-    rgba(13,148,136,0.95) 0%,
-    rgba(255,255,255,0.92) 45%,
-    rgba(13,148,136,0.95) 100%
+    #0d9488 0%,   /* primary teal */
+    #ffd166 40%,  /* warm highlight */
+    #ea580c 70%   /* secondary orange */
   );
-  background-size: 200% 100%;
+
+  background-size: 250% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent; /* Safari/Chrome */
-  color: transparent;                    /* browsers that support background-clip:text */
+  color: transparent;
 
-  /* two animations:
-     1) fadeIn runs immediately to bring the text from invisible -> visible
-     2) shimmer-slide runs after a short delay so the shimmer movement doesn't start instantly
-  */
+  /* fade in then slower shimmer movement (slower = 4s) */
   opacity: 0;
   animation:
-    fadeIn 360ms ease forwards,
-    shimmer-slide 2s linear 600ms infinite;
-  text-decoration: none;
+    shimmer-fadein 500ms ease forwards,
+    shimmer-move 4s linear 800ms infinite;
+  /* keep text selectable and readable for screen readers */
 }
 
 /* pause shimmer on hover/focus to improve readability */
 .shimmer:hover,
 .shimmer:focus {
   animation-play-state: paused;
-  -webkit-text-fill-color: currentColor; /* ensure readable while paused */
+  -webkit-text-fill-color: currentColor;
+  color: inherit;
 }
 
-/* keyframes: fade-in */
-@keyframes fadeIn {
+/* fade-in */
+@keyframes shimmer-fadein {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
 
-/* keyframes that move the gradient across the text */
-@keyframes shimmer-slide {
+/* shimmer movement */
+@keyframes shimmer-move {
   0%   { background-position: 200% 0; }
   100% { background-position: -200% 0; }
 }
 
-/* Respect users who prefer reduced motion */
+/* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   .shimmer {
     animation: none;
@@ -52,4 +57,11 @@
     background: none;
     opacity: 1;
   }
+}
+
+/* Optional helper: ensure header nav anchors use no extra decoration that hides gradient */
+header nav a.shimmer {
+  /* ensure anchors behave well in header context */
+  display: inline-block;
+  line-height: 1;
 }
