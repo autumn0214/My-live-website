@@ -1,58 +1,79 @@
-// Adds .shimmer to header nav links on destination pages (excludes the current page).
-// Tailored selectors: top nav inside the header and panel nav inside #siteMenu.
-// Adjust destinationPages array if you add/remove pages.
+// Production-ready shimmer script (data-driven).
+// - Reads destination list from <body data-destinations="costarica.html,panama.html,belize.html">
+// - Adds .shimmer to header nav links and slide-over menu links that point to other destination pages.
+// - Skips logo links (links that contain <img> or <svg>).
+// - No console debug logs.
+// Usage: include this script with defer (or before </body>) and add the data attribute to <body>.
 
 (function () {
-  const destinationPages = ['costarica.html', 'panama.html', 'belize.html'];
+  // Read the comma-separated destination list from <body data-destinations="...">
+  const body = document.body;
+  const raw = (body && body.getAttribute && body.getAttribute('data-destinations')) || '';
+  // Parse into normalized filenames (lowercase, trimmed)
+  const destinationPages = raw.split(',')
+    .map(s => (s || '').trim().toLowerCase())
+    .filter(Boolean);
+
+  // If no destinations provided, do nothing.
+  if (!destinationPages.length) return;
 
   // Determine current page filename (e.g., "panama.html"). Treat root as index.html.
   const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
 
-  // Selectors tailored to your header markup:
+  // Query selectors tailored to your header layout:
   const selectors = [
-    'header .max-w-7xl nav a[href$=".html"]', // top header nav (desktop)
-    '#siteMenu nav a[href$=".html"]',         // slide-over panel links
-    'header a[href$=".html"]:not(#siteMenu a[href$=".html"])' // fallback catch-all for header anchors
+    'header nav a[href$=".html"]', // top header nav anchors
+    '#siteMenu nav a[href$=".html"]' // slide-over panel anchors
   ];
 
-  // Gather anchors (use a Set to dedupe)
-  const anchors = new Map(); // map by normalized href => element
+  // Collect anchors (map by filename to the anchor element)
+  const anchors = new Map();
+
   selectors.forEach(sel => {
     document.querySelectorAll(sel).forEach(a => {
       if (!a || !a.getAttribute) return;
-      // skip anchors that are the logo or contain images/SVGs
+      // Skip anchors that contain images or SVGs (logo links)
       if (a.querySelector('img') || a.querySelector('svg')) return;
-      // normalize href to filename only
-      try {
-        const href = a.getAttribute('href');
-        if (!href) return;
-        const filename = href.split('/').pop().toLowerCase();
-        if (!filename) return;
-        anchors.set(filename, a);
-      } catch (e) {
-        // ignore malformed hrefs
-      }
+      const href = a.getAttribute('href');
+      if (!href) return;
+      const filename = href.split('/').pop().toLowerCase();
+      if (!filename) return;
+      // store first anchor found for this filename
+      if (!anchors.has(filename)) anchors.set(filename, a);
     });
   });
 
-  // Apply shimmer only to destination links that are NOT the current page
+  // Apply or remove .shimmer according to destination list and current page
   anchors.forEach((anchor, filename) => {
     if (destinationPages.includes(filename) && filename !== current) {
       anchor.classList.add('shimmer');
-      // make sure it is keyboard-focusable and has a sensible hover/focus pause
-      anchor.setAttribute('tabindex', anchor.getAttribute('tabindex') || '0');
     } else {
       anchor.classList.remove('shimmer');
     }
   });
 
-  // Optional: observe DOM changes (useful if header markup is injected later)
-  const observer = new MutationObserver((mutations) => {
-    // re-run the logic if header links change
-    // (simple approach: re-call this module by reloading the page or manually invoking)
-  });
-  // To avoid overhead: we do not observe by default. If you need it, uncomment next lines:
-  // const headerEl = document.querySelector('header');
-  // if (headerEl) observer.observe(headerEl, { childList: true, subtree: true });
-
+  // Optional: if your header is dynamically replaced/rehydrated, you can re-run the logic.
+  // Expose a safe reapply function:
+  window.__shimmerReapply = function() {
+    // Re-run the anchor collection/apply step (keeps script idempotent)
+    const newAnchors = new Map();
+    selectors.forEach(sel => {
+      document.querySelectorAll(sel).forEach(a => {
+        if (!a || !a.getAttribute) return;
+        if (a.querySelector('img') || a.querySelector('svg')) return;
+        const href = a.getAttribute('href');
+        if (!href) return;
+        const filename = href.split('/').pop().toLowerCase();
+        if (!filename) return;
+        if (!newAnchors.has(filename)) newAnchors.set(filename, a);
+      });
+    });
+    newAnchors.forEach((anchor, filename) => {
+      if (destinationPages.includes(filename) && filename !== current) {
+        anchor.classList.add('shimmer');
+      } else {
+        anchor.classList.remove('shimmer');
+      }
+    });
+  };
 })();
