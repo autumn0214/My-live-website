@@ -1,6 +1,6 @@
-/* Shimmer text effect (works with -webkit-background-clip for Safari/Chrome) */
+/* Shimmer text effect with a short fade-in before the moving shimmer starts */
 .shimmer {
-  /* base color produced by gradient — adjust the colors to match your design */
+  /* gradient used as the text fill */
   background: linear-gradient(
     90deg,
     rgba(13,148,136,0.95) 0%,
@@ -12,8 +12,15 @@
   background-clip: text;
   -webkit-text-fill-color: transparent; /* Safari/Chrome */
   color: transparent;                    /* browsers that support background-clip:text */
-  animation: shimmer-slide 2s linear infinite;
-  /* make sure text remains selectable / readable by screen readers */
+
+  /* two animations:
+     1) fadeIn runs immediately to bring the text from invisible -> visible
+     2) shimmer-slide runs after a short delay so the shimmer movement doesn't start instantly
+  */
+  opacity: 0;
+  animation:
+    fadeIn 360ms ease forwards,
+    shimmer-slide 2s linear 600ms infinite;
   text-decoration: none;
 }
 
@@ -21,6 +28,13 @@
 .shimmer:hover,
 .shimmer:focus {
   animation-play-state: paused;
+  -webkit-text-fill-color: currentColor; /* ensure readable while paused */
+}
+
+/* keyframes: fade-in */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 /* keyframes that move the gradient across the text */
@@ -36,5 +50,6 @@
     -webkit-text-fill-color: currentColor;
     color: inherit;
     background: none;
+    opacity: 1;
   }
 }
