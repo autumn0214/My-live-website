@@ -22,21 +22,22 @@
     @media (min-width:1024px){ .site-logo-img{ height:64px; } }
   </style>
 
-  <!-- Add the shimmer stylesheet here (in head so it can apply on paint) -->
-<link rel="stylesheet" href="/asset/shimmer.css">
+  <!-- Shimmer stylesheet -->
+  <link rel="stylesheet" href="/assets/shimmer.css">
 </head>
-<body class="font-sans bg-white text-dark-text">
+<body class="font-sans bg-white text-dark-text" data-destinations="costarica.html,panama.html,belize.html">
   <!-- Header -->
   <header class="sticky top-0 z-40 bg-white border-b">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
       <a href="index.html" class="flex items-center gap-3">
-        <img src="asset/AutumnPointLogo.svg" alt="AutumnPoint" class="site-logo-img" onerror="this.style.display='none'">
+        <img src="assets/AutumnPointLogo.svg" alt="AutumnPoint" class="site-logo-img" onerror="this.style.display='none'">
         <span class="text-xl font-bold" style="color:var(--primary-teal)">Autumn Point</span>
       </a>
 
       <nav>
-        <a href="costarica.html" class="shimmer">Costa Rica</a>
-        <a href="panama.html" class="shimmer">Panama</a>
+        <a href="costarica.html">Costa Rica</a>
+        <a href="panama.html">Panama</a>
+        <a href="belize.html">Belize</a>
       </nav>
     </div>
   </header>
@@ -97,6 +98,23 @@
               <li><strong>Low End:</strong> Mainland living in Cayo or other smaller towns relying on local markets.</li>
               <li><strong>Note:</strong> English is the official language making bureaucracy and integration easier for many North American expats.</li>
             </ul>
-            <a href="get-started.html" class="mt-6 inline-block text-primary-te
+            <a href="get-started.html" class="mt-6 inline-block text-primary-teal font-semibold hover:underline">Get started — Book consultation &rarr;</a>
+          </aside>
+        </div>
+      </div>
+    </section>
 
-              
+    <!-- Bottom: Back to Home (left) + quick country links (right) -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 flex items-center justify-between">
+      <a href="index.html" class="text-sm text-gray-700 underline">&larr; Back to Home</a>
+      <div class="space-x-4">
+        <a href="costarica.html" class="text-sm text-gray-700 hover:text-secondary-orange">Costa Rica guide</a>
+        <a href="panama.html" class="text-sm text-gray-700 hover:text-secondary-orange">Panama guide</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Shimmer script -->
+  <script src="/assets/shimmer.js" defer></script>
+</body>
+</html>
