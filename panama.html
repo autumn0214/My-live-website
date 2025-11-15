@@ -19,8 +19,11 @@
     .site-logo-img { height:52px; width:auto; object-fit:contain; }
     @media (min-width:1024px){ .site-logo-img{ height:64px; } }
   </style>
+
+  <!-- Shimmer stylesheet -->
+  <link rel="stylesheet" href="asset/shimmer.css">
 </head>
-<body class="font-sans text-dark-text bg-white">
+<body class="font-sans text-dark-text bg-white" data-destinations="costarica.html,panama.html,belize.html">
   <!-- Header: site logo (if present) left + other country links top-right -->
   <header class="sticky top-0 z-40 bg-white border-b">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
@@ -120,5 +123,8 @@
       </div>
     </div>
   </main>
+
+  <!-- Shimmer script -->
+  <script src="asset/shimmer.js" defer></script>
 </body>
 </html>
