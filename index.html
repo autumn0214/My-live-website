@@ -40,6 +40,8 @@
             height: 100%;
             overflow: hidden;
             z-index: 0; /* Below content layer */
+            /* Add gradient background to prevent white screen during video load */
+            background: linear-gradient(135deg, #0d9488 0%, #0ea5a4 50%, #14b8a6 100%);
         }
 
         .hero-video {
@@ -52,6 +54,12 @@
             left: 50%;
             transform: translate(-50%, -50%);
             object-fit: cover; /* Ensures video covers the entire container */
+            opacity: 0;
+            transition: opacity 0.6s ease-in;
+        }
+        
+        .hero-video.loaded {
+            opacity: 1;
         }
 
         /* Specific style for package features list */
@@ -264,17 +272,24 @@
             
 <script>
     
-  // debug helpers - shows errors in console and tries to play
+  // Video loading handler - fade in when ready
   (function(){
     const v = document.getElementById('hero-video-bg');
     if (!v) return;
+    
+    // Add loaded class when video can play
+    v.addEventListener('canplay', () => {
+      v.classList.add('loaded');
+    });
+    
+    v.addEventListener('loadeddata', () => {
+      v.classList.add('loaded');
+    });
+    
     v.addEventListener('error', () => console.error('Video element error code:', v.error && v.error.code, v.error));
     v.addEventListener('stalled', () => console.warn('video stalled'));
     v.addEventListener('suspend', () => console.warn('video suspend'));
     v.play().then(() => console.log('video play started')).catch(e => console.warn('autoplay prevented or play failed:', e));
-      
-      }
-    });
   })();
 </script>
 
