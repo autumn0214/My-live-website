@@ -65,82 +65,139 @@
         .spinner { border: 4px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; width: 1.5rem; height: 1.5rem; animation: spin 1s linear infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* ========== HEADER: taller + larger header-video/logo ==========
-           Desktop-first sizing:
-           - header bar much taller to emphasize the mark/video
-           - header-row spacing increased
-           - very large site-logo-img (video) on desktop
+        /* ========== HEADER: transparent over hero video ==========
+           header is transparent so logo + menu sit on top of the hero video
+           - header kept tall per your earlier request
+           - header contents are positioned above the hero (higher z-index)
+           - header-left aligns the header content farther toward the left edge
         */
         header.sticky {
-          min-height: 420px;            /* taller header on large screens */
-          background: #ffffff;
+          min-height: 420px;
+          background: transparent !important;
+          border-bottom: none !important;
+          box-shadow: none !important;
         }
 
-        /* inner row spacing so content centers nicely inside the taller header */
+        /* helper to move header inner column left on wide screens */
+        .header-left {
+          margin-left: 2.5rem; /* shift header contents toward the left edge */
+        }
+
         .header-row {
           padding-top: 40px;
           padding-bottom: 40px;
           align-items: center;
+          position: relative;
+          z-index: 60; /* ensures header contents sit above hero video */
         }
 
-        /* Make the header video/logo much larger on desktop */
+        /* Make the header logo/video large (keeps your earlier large values) */
         .site-logo-img {
-          height: 360px !important;     /* primary video height on wide screens */
+          height: 360px !important;     /* large logo/video height on desktop */
           width: auto !important;
           max-height: 520px;
           display: block;
+          z-index: 65;
         }
 
-        /* Menu button comfortable size */
+        /* Hamburger / menu button: translucent background + slight blur for readability */
         #siteMenuButton {
           padding: 14px;
           border-radius: 10px;
+          background: rgba(255,255,255,0.38);
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
+          border: 1px solid rgba(255,255,255,0.12);
+          box-shadow: 0 4px 14px rgba(15,23,42,0.06);
+        }
+        #siteMenuButton:hover, #siteMenuButton:focus {
+          background: rgba(255,255,255,0.56);
         }
         #siteMenuButton svg { width: 34px; height: 34px; }
 
-        /* Slide-over panel small logo remains compact */
-        #siteMenu img.site-logo-img {
-          height: 64px;
+        /* ===== HERO: move hero content left and make text more readable =====
+           - hero-inner pushes the hero content block left of center
+           - hero-text-panel adds a semi-opaque dark panel and subtle backdrop blur
+             to make the headline and paragraph more legible against the moving video
+           - also add a subtle text-shadow for additional legibility on bright spots
+        */
+        .hero-inner {
+          margin-left: 2.5rem;  /* moves the hero content left from centered */
+          margin-right: auto;
+          max-width: 980px;     /* keep text line length readable */
         }
 
-        /* Responsive downscaling to keep header usable on smaller viewports */
+        .hero-text-panel {
+          display: inline-block;
+          background: linear-gradient(180deg, rgba(0,0,0,0.64), rgba(0,0,0,0.28));
+          padding: 1.25rem 1.5rem;
+          border-radius: 12px;
+          box-shadow: 0 20px 40px rgba(2,6,23,0.48);
+          backdrop-filter: blur(4px);
+          -webkit-backdrop-filter: blur(4px);
+        }
+
+        .hero-text-panel h1, .hero-text-panel p {
+          text-shadow: 0 6px 20px rgba(0,0,0,0.6);
+        }
+
+        .hero-text-panel h1 { color: #ffffff; }
+        .hero-text-panel p { color: #f3f4f6; }
+
+        /* small tweak to call attention to CTA on top of overlay */
+        .hero-text-panel .cta {
+          margin-top: 1.25rem;
+          display: inline-flex;
+        }
+
+        /* Responsive rules: reduce left offset on smaller screens so content doesn't go under the browser UI */
+        @media (min-width: 1600px) {
+          .header-left, .hero-inner { margin-left: 4.5rem; }
+          .hero-inner { max-width: 1100px; }
+        }
+
         @media (max-width: 1400px) {
           header.sticky { min-height: 360px; }
           .header-row { padding-top: 34px; padding-bottom: 34px; }
           .site-logo-img { height: 300px !important; max-height: 420px; }
+          .header-left, .hero-inner { margin-left: 2rem; }
         }
 
         @media (max-width: 1000px) {
           header.sticky { min-height: 300px; }
           .header-row { padding-top: 28px; padding-bottom: 28px; }
           .site-logo-img { height: 220px !important; max-height: 320px; }
+          .header-left, .hero-inner { margin-left: 1.25rem; }
         }
 
         @media (max-width: 700px) {
           header.sticky { min-height: 220px; }
           .header-row { padding-top: 18px; padding-bottom: 18px; }
           .site-logo-img { height: 160px !important; max-height: 220px; }
+          .header-left, .hero-inner { margin-left: 0.75rem; }
+          #siteMenuButton { background: rgba(255,255,255,0.6); }
         }
 
         @media (max-width: 480px) {
-          /* On small phones stack header content and limit size */
           header.sticky { min-height: auto; }
           .header-row {
             padding-top: 12px;
             padding-bottom: 12px;
             flex-direction: column;
             gap: 8px;
-            align-items: center;
+            align-items: flex-start;
           }
           .site-logo-img { height: 96px !important; max-height: 140px; }
+          .header-left, .hero-inner { margin-left: 0.75rem; margin-right: 0.75rem; }
           #siteMenuButton svg { width: 26px; height: 26px; }
+          .hero-text-panel { padding: .9rem 1rem; }
         }
     </style>
 </head>
 
 <body>
-<header class="sticky top-0 z-50 bg-white border-b-2 shadow-sm">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<header class="sticky top-0 z-50" role="banner">
+  <div class="max-w-7xl ml-0 mr-auto px-4 sm:px-6 lg:px-8 header-left">
     <div class="flex items-center justify-between header-row">
       <!-- Left: enlarged animated/video mark only (wordmark removed) -->
       <a href="index.html" class="flex items-center gap-4 group" aria-label="Autumn Point Relocation — Home">
@@ -151,14 +208,14 @@
       <!-- Right: menu button -->
       <div class="flex items-center">
         <button id="siteMenuButton" aria-controls="siteMenu" aria-expanded="false"
-                class="p-2 rounded-md text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0d9488]">
+                class="p-2 rounded-md text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0d9488]" title="Open main menu">
           <span class="sr-only">Open main menu</span>
 
-          <svg id="menuOpenIcon" class="block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#374151" aria-hidden="true">
+          <svg id="menuOpenIcon" class="block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#111827" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
           </svg>
 
-          <svg id="menuCloseIcon" class="hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="#374151" fill="none" aria-hidden="true">
+          <svg id="menuCloseIcon" class="hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="#111827" fill="none" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
         </button>
@@ -260,63 +317,38 @@
   </script>
 </header>
 
-    
-    <main id="main-content">
-<section id="page-home" class="relative overflow-hidden pt-16 pb-16 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-28 flex items-center h-[60vh] md:h-[55vh] lg:h-[50vh] min-h-[360px]">          <div class="hero-video-container">
-  <video id="hero-video-bg"
-         class="hero-video"
-         autoplay
-         loop
-         muted
-         playsinline
-         preload="auto"
-         poster="assets/images/hero-poster.jpg"
-         aria-hidden="true">
-    <source src="eal.mp4" type="video/mp4">
-    <!-- optional fallback source:
-    <source src="assets/videos/eal.webm" type="video/webm"> -->
-  </video>
+<main id="main-content">
+<section id="page-home" class="relative overflow-hidden pt-16 pb-16 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-28 flex items-center h-[60vh] md:h-[55vh] lg:h-[50vh] min-h-[360px]">
+  <div class="hero-video-container" aria-hidden="true">
+    <video id="hero-video-bg" class="hero-video" autoplay loop muted playsinline preload="auto" poster="assets/images/hero-poster.jpg">
+      <source src="eal.mp4" type="video/mp4">
+    </video>
 
-  <!-- Fallback background image if video fails or autoplay is blocked -->
-  <div id="hero-fallback" class="hero-video hidden bg-cover bg-center"
-       style="background-image: url('assets/images/hero-poster.jpg');"></div>
-</div>
-            
-<script>
-    
-  // debug helpers - shows errors in console and tries to play
-  (function(){
-    const v = document.getElementById('hero-video-bg');
-    if (!v) return;
-    v.addEventListener('error', () => console.error('Video element error code:', v.error && v.error.code, v.error));
-    v.addEventListener('stalled', () => console.warn('video stalled'));
-    v.addEventListener('suspend', () => console.warn('video suspend'));
-    v.play().then(() => console.log('video play started')).catch(e => console.warn('autoplay prevented or play failed:', e));
-      
-      }
-    });
-  })();
-</script>
+    <div id="hero-fallback" class="hero-video hidden bg-cover bg-center" style="background-image: url('assets/images/hero-poster.jpg');"></div>
+  </div>
 
->
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 text-white">
-                <div class="lg:grid lg:grid-cols-12 lg:gap-12 items-center">
-                    <div class="lg:col-span-8 xl:col-span-7">
-                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
-                            Your <span class="text-secondary-orange">Smooth Transition</span> to Pura Vida
-                        </h1>
-                        <p class="mt-6 text-xl text-gray-100 max-w-lg">
-                            We specialize in making your move to Costa Rica, Panama, or Belize seamless, stress-free, and legally sound. Start your Central American adventure today.
-                        </p>
-                        <div class="mt-10 flex space-x-4">
-                            <a href="#page-contact" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg shadow-xl text-white bg-primary-teal hover:bg-secondary-orange transition duration-300 transform hover:scale-105">
-                                Book a Free Consultation
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <!-- hero-inner moved left so content sits farther to the left of the page -->
+  <div class="hero-inner relative z-20 text-white">
+    <div class="lg:grid lg:grid-cols-12 lg:gap-12 items-center">
+      <div class="lg:col-span-8 xl:col-span-7">
+        <!-- add hero-text-panel to improve contrast over the video -->
+        <div class="hero-text-panel">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+            Your <span class="text-secondary-orange">Smooth Transition</span> to Pura Vida
+          </h1>
+          <p class="mt-4 text-xl text-gray-100 max-w-lg">
+            We specialize in making your move to Costa Rica, Panama, or Belize seamless, stress-free, and legally sound. Start your Central American adventure today.
+          </p>
+          <div class="cta">
+            <a href="#page-contact" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg shadow-xl text-white bg-primary-teal hover:bg-secondary-orange transition duration-300 transform hover:scale-105">
+              Book a Free Consultation
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
         <section id="page-destinations" class="py-16 sm:py-24 bg-gray-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -744,47 +776,36 @@
         </section>
 
         <footer class="bg-gray-800 text-white">
-            <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
-                <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
-                    <div class="px-5 py-2">
-                        <a href="#page-home" class="text-base text-gray-300 hover:text-primary-teal">Home</a>
-                    </div>
-                    <div class="px-5 py-2">
-                        <a href="#page-destinations" class="text-base text-gray-300 hover:text-primary-teal">Destinations</a>
-                    </div>
-                    <div class="px-5 py-2">
-                        <a href="#page-packages" class="text-base text-gray-300 hover:text-primary-teal">Packages</a>
-                    </div>
-                    <div class="px-5 py-2">
-                        <a href="#page-login" class="text-base text-gray-300 hover:text-primary-teal">Client Login</a>
-                    </div>
-                    <div class="px-5 py-2">
-                        <a href="#page-contact" class="text-base text-gray-300 hover:text-primary-teal">Contact</a>
-                    </div>
-                </nav>
-                <p class="mt-8 text-center text-base text-gray-400">
-                    &copy; 2025 Autumn Point Relocation Solutions. All rights reserved.
-                </p>
-            </div>
-        </footer>
+  <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+    <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
+      <div class="px-5 py-2"><a href="#page-home" class="text-base text-gray-300 hover:text-primary-teal">Home</a></div>
+      <div class="px-5 py-2"><a href="#page-destinations" class="text-base text-gray-300 hover:text-primary-teal">Destinations</a></div>
+      <div class="px-5 py-2"><a href="#page-packages" class="text-base text-gray-300 hover:text-primary-teal">Packages</a></div>
+      <div class="px-5 py-2"><a href="#page-login" class="text-base text-gray-300 hover:text-primary-teal">Client Login</a></div>
+      <div class="px-5 py-2"><a href="#page-contact" class="text-base text-gray-300 hover:text-primary-teal">Contact</a></div>
+    </nav>
+    <p class="mt-8 text-center text-base text-gray-400">&copy; 2025 Autumn Point Relocation Solutions. All rights reserved.</p>
+  </div>
+</footer>
 
-    </main>
-    
-    <script> 
-
-        window.onload = function() {
-            const video = document.getElementById('hero-video-bg');
-            if (video) {
-                video.load();
-                video.play().catch(error => {
-                    console.warn("Video autoplay failed (often due to browser restrictions). Using image fallback.", error);
-                    video.classList.add('hidden');
-                    document.getElementById('hero-fallback').classList.remove('hidden');
-                });
-            }
-            closeModal();
-        };
-
-    </script>
+<script>
+  // hero video play fallback
+  window.onload = function() {
+    const video = document.getElementById('hero-video-bg');
+    if (video) {
+      video.load();
+      video.play().catch(error => {
+        console.warn("Video autoplay failed (often due to browser restrictions). Using image fallback.", error);
+        video.classList.add('hidden');
+        const fb = document.getElementById('hero-fallback');
+        if (fb) fb.classList.remove('hidden');
+      });
+    }
+    // Initialize menu hidden
+    const panel = document.getElementById('siteMenu');
+    if (panel) panel.classList.add('translate-x-full');
+  };
+</script>
+</main>
 </body>
 </html>
