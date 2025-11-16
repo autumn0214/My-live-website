@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Autumn Point Relocation Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
@@ -23,13 +23,11 @@
                 }
             }
         }
-    
     </script>
+
     <style>
         /* Custom styles for smooth scrolling to anchors */
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         /* Hero Video Container Styling */
         .hero-video-container {
@@ -41,7 +39,6 @@
             overflow: hidden;
             z-index: 0; /* Below content layer */
         }
-
         .hero-video {
             min-width: 100%;
             min-height: 100%;
@@ -68,148 +65,109 @@
             color: #0d9488;
             font-weight: bold;
         }
+
         /* Custom modal styles */
-        .modal {
-            background-color: rgba(0, 0, 0, 0.6);
-        }
-        .modal-content {
-            animation: slide-down 0.3s ease-out;
-        }
+        .modal { background-color: rgba(0, 0, 0, 0.6); }
+        .modal-content { animation: slide-down 0.3s ease-out; }
         @keyframes slide-down {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-20px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
+
         /* Loading Spinner */
         .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.3);
+            border: 4px solid rgba(255,255,255,0.3);
             border-top-color: #fff;
             border-radius: 50%;
             width: 1.5rem;
             height: 1.5rem;
             animation: spin 1s linear infinite;
         }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* === Header enlargement and logo/nav scaling ===
-           These rules increase the header height, enlarge the logo/video,
-           scale the wordmark, and make nav controls easier to tap.
+        /* ========== Header & logo sizing changes ==========
+           - header bar made larger
+           - logo/video increased
+           - right-hand wordmark removed (only mark/video kept)
         */
         header.sticky {
-          /* overall header visual height */
-          min-height: 132px;
+          min-height: 200px;            /* increased header height for a more prominent bar */
+          background: #ffffff;
         }
 
-        /* Target inner flex row that already uses Tailwind classes */
-        header.sticky .header-row {
-          padding-top: 22px;   /* increases vertical breathing */
-          padding-bottom: 22px;
+        /* ensure header inner row uses extra vertical space */
+        .header-row {
+          padding-top: 28px;
+          padding-bottom: 28px;
         }
 
-        /* Logo/video: make larger but responsive */
+        /* Primary logo/video element: much larger on desktop */
         .site-logo-img {
-          height: 92px !important;
+          height: 140px !important;     /* larger logo/video height */
           width: auto !important;
-          max-height: 140px;
+          max-height: 180px;
           display: block;
         }
 
-        /* Wordmark to the right of the mark */
-        .header-wordmark .brand-name {
-          color: var(--primary-teal);
-          font-weight: 800;
-          font-size: 34px;
-          line-height: 1;
-          display: block;
-        }
-        .header-wordmark .brand-sub {
-          color: #6B6B6B;
-          font-weight: 600;
-          font-size: 13px;
-          margin-top: 4px;
-          letter-spacing: 0.06em;
-        }
+        /* (Removed the right-hand wordmark entirely from markup per request) */
 
-        /* Make the menu button easier to tap and slightly larger */
+        /* Menu button slightly larger for comfortable tapping */
         #siteMenuButton {
-          padding: 10px;
+          padding: 12px;
           border-radius: 8px;
         }
-        #siteMenuButton svg { width: 26px; height: 26px; }
+        #siteMenuButton svg { width: 28px; height: 28px; }
 
-        /* Slide-over panel small logo slightly increased */
+        /* Slide-over panel small logo slightly increased but still compact */
         #siteMenu img.site-logo-img {
-          height: 56px;
+          height: 64px;
         }
 
-        /* Responsive reductions for small screens */
+        /* Responsive adjustments */
         @media (max-width: 900px) {
-          header.sticky .header-row {
-            padding-top: 16px;
-            padding-bottom: 16px;
-          }
-          .site-logo-img { height: 72px !important; }
-          .header-wordmark .brand-name { font-size: 28px; }
-          .header-wordmark .brand-sub { font-size: 12px; }
+          header.sticky { min-height: 160px; }
+          .header-row { padding-top: 20px; padding-bottom: 20px; }
+          .site-logo-img { height: 110px !important; max-height: 140px; }
         }
         @media (max-width: 480px) {
-          header.sticky {
-            min-height: auto;
-          }
-          header.sticky .header-row {
+          header.sticky { min-height: auto; }
+          .header-row {
             padding-top: 12px;
             padding-bottom: 12px;
             flex-direction: column;
             gap: 8px;
             align-items: center;
           }
-          .header-wordmark { align-items: center; text-align: center; }
-          .site-logo-img { height: 56px !important; }
+          .site-logo-img { height: 72px !important; max-height: 96px; }
         }
-
     </style>
 </head>
+
 <body>
 <header class="sticky top-0 z-50 bg-white border-b-2 shadow-sm">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Restored thicker vertical padding: py-6 on small, py-12 on large -->
-    <!-- Added a helper class "header-row" so our CSS can target the row reliably -->
-    <div class="flex items-center justify-between py-6 lg:py-12 header-row">
-      <!-- Logo left: show symbol + wordmark side-by-side (larger) -->
+    <!-- header-row helper class makes targeting easier -->
+    <div class="flex items-center justify-between header-row">
+      <!-- Logo left: now only the animated/video mark (wordmark removed as requested) -->
       <a href="index.html" class="flex items-center gap-4 group" aria-label="Autumn Point Relocation — Home">
-        <!-- Use the uploaded full SVG (symbol + wordmark); ensure the file exists at assets/AutumnPointLogo.svg -->
-        <!-- Logo is a video on your site — removed inline small height and rely on CSS .site-logo-img -->
+        <!-- Logo is a video on your site — CSS controls sizing now -->
+        <!-- NOTE: ensure asset/Autumn Point.mp4 path is correct on your server -->
         <video src="asset/Autumn Point.mp4" autoplay loop muted playsinline class="site-logo-img" aria-hidden="true"></video>
-
-        <!-- Optional HTML wordmark (keeps text selectable & accessible) shown on sm+ -->
-        <!-- Added header-wordmark and explicit brand classes so CSS can scale them -->
-        <div class="hidden sm:flex flex-col leading-tight header-wordmark">
-          <span class="brand-name">AutumnPoint</span>
-          <span class="brand-sub">Relocation Solutions</span>
-        </div>
       </a>
 
-      <!-- Right-side controls -->
+      <!-- Right-side controls (menu button) -->
       <div class="flex items-center">
-        <!-- Single menu button (visible on all sizes) - three-line hamburger when closed -->
         <button id="siteMenuButton" aria-controls="siteMenu" aria-expanded="false"
                 class="p-2 rounded-md text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0d9488]">
           <span class="sr-only">Open main menu</span>
 
           <!-- Three-line hamburger (shown when closed) -->
-          <svg id="menuOpenIcon" class="block w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#374151" aria-hidden="true">
+          <svg id="menuOpenIcon" class="block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#374151" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
           </svg>
 
           <!-- Close icon (shown when open) -->
-          <svg id="menuCloseIcon" class="hidden w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="#374151" fill="none" aria-hidden="true">
+          <svg id="menuCloseIcon" class="hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="#374151" fill="none" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
         </button>
@@ -225,10 +183,8 @@
     <div class="h-full flex flex-col">
       <div class="px-6 py-5 border-b flex items-center justify-between">
         <div class="flex items-center gap-4">
-          <!-- small logo in panel -->
+          <!-- small logo in panel (kept so menu still shows brand) -->
           <img src="asset/AutumnPointLogo.svg" alt="AutumnPoint logo" class="site-logo-img h-10 w-auto" />
-
-          </svg>
           <div>
             <div class="font-bold text-lg" style="color:#0d9488">AutumnPoint</div>
             <div class="text-xs text-gray-600">Relocation Solutions</div>
