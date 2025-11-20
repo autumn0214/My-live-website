@@ -103,26 +103,49 @@
           z-index: 65;
         }
 
-         /* Move hamburger farther left: absolute positioning inside header row */
-        #siteMenuButton {
-          position: absolute;
-          left: 1rem;                  /* pushes the hamburger toward the left edge */
-          top: 50%;
-          transform: translateY(-50%);
-          padding: 10px;
-          border-radius: 10px;
-          background: rgba(255,255,255,0.38);
-          backdrop-filter: blur(6px);
-          -webkit-backdrop-filter: blur(6px);
-          border: 1px solid rgba(255,255,255,0.12);
-          box-shadow: 0 4px 14px rgba(15,23,42,0.06);
-        }
-        /* When the menu button is inside the row absolutely positioned,
-           reduce size of its SVG to match the compact header */
-        #siteMenuButton svg { width: 28px; height: 28px; }
+#siteMenuButton {
+  position: absolute;
+  /* place flush at the viewport edge while respecting device safe-area */
+  right: env(safe-area-inset-right, 0);
+  left: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10px 12px;
+  /* visually flush: square on the right edge, rounded on the left */
+  border-radius: 8px 0 0 8px;
+  background: rgba(255,255,255,0.38);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.12);
+  /* remove heavy shadow so the button reads as part of the viewport edge */
+  box-shadow: none;
+}
 
-        #siteMenuButton:hover, #siteMenuButton:focus {
-          background: rgba(255,255,255,0.56);
+/* Keep the icon compact for the small header */
+#siteMenuButton svg { width: 28px; height: 28px; }
+
+/* Responsive overrides (replace any previous #siteMenuButton tweaks in media queries) */
+@media (min-width: 1600px) {
+  #siteMenuButton { right: calc(env(safe-area-inset-right, 0)); }
+}
+@media (max-width: 1400px) {
+  #siteMenuButton { right: calc(env(safe-area-inset-right, 0)); }
+}
+@media (max-width: 1000px) {
+  #siteMenuButton { right: calc(env(safe-area-inset-right, 0)); }
+}
+@media (max-width: 700px) {
+  #siteMenuButton {
+    right: calc(env(safe-area-inset-right, 0));
+    background: rgba(255,255,255,0.6);
+    /* slightly smaller icon on small screens */
+  }
+  #siteMenuButton svg { width: 24px; height: 24px; }
+}
+@media (max-width: 480px) {
+  #siteMenuButton { right: calc(env(safe-area-inset-right, 0)); }
+  #siteMenuButton svg { width: 22px; height: 22px; }
+}
         }
 
         /* ===== HERO: move hero content left and make text more readable =====
