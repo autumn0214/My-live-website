@@ -65,17 +65,21 @@
         .spinner { border: 4px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; width: 1.5rem; height: 1.5rem; animation: spin 1s linear infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* ========== HEADER: transparent over hero video ==========
-           header is transparent so logo + menu sit on top of the hero video
-           - header kept tall per your earlier request
-           - header contents are positioned above the hero (higher z-index)
-           - header-left aligns the header content farther toward the left edge
+        /* ========== HEADER: fixed at top of viewport ==========
+           Changed from sticky to fixed so the header stays always at the top.
+           Main content receives equal top padding (set from script) so it won't be hidden.
         */
         header.sticky {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          width: 100%;
           min-height: 420px;
           background: transparent !important;
           border-bottom: none !important;
           box-shadow: none !important;
+          z-index: 70; /* ensure header stays above other content like hero video */
         }
 
         /* helper to move header inner column left on wide screens */
@@ -179,7 +183,7 @@
         }
 
         @media (max-width: 480px) {
-          header.sticky { min-height: auto; }
+          header.sticky { min-height: auto; position: fixed; } /* allow header to shrink on very small screens */
           .header-row {
             padding-top: 12px;
             padding-bottom: 12px;
