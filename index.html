@@ -96,14 +96,13 @@
            This keeps the logo in the left column while the hamburger sits closer to the viewport edge.
            On small screens we fall back to normal flow (position: static) so layout remains natural.
         */
-        .menu-button-wrap {
-          position: absolute;
-          right: 1.25rem;
-          top: 50%;
-          transform: translateY(-50%);
-          z-index: 75;
-        }
-
+       .menu-button-wrap {
+  position: absolute;
+  right: 6.5rem; /* moved left from 1.25rem -> larger right offset moves it left */
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 75;
+}
         /* Make the header logo/video large (keeps your earlier large values) */
         .site-logo-img {
           height: 360px !important;     /* large logo/video height on desktop */
@@ -167,7 +166,7 @@
         @media (min-width: 1600px) {
           .header-left, .hero-inner { margin-left: 4.5rem; }
           .hero-inner { max-width: 1100px; }
-          .menu-button-wrap { right: 4.5rem; }
+  .menu-button-wrap { right: 8.5rem; }
         }
 
         @media (max-width: 1400px) {
@@ -175,7 +174,7 @@
           .header-row { padding-top: 34px; padding-bottom: 34px; }
           .site-logo-img { height: 300px !important; max-height: 420px; }
           .header-left, .hero-inner { margin-left: 2rem; }
-          .menu-button-wrap { right: 2rem; }
+  .menu-button-wrap { right: 5rem; }
         }
 
         @media (max-width: 1000px) {
@@ -183,7 +182,7 @@
           .header-row { padding-top: 28px; padding-bottom: 28px; }
           .site-logo-img { height: 220px !important; max-height: 320px; }
           .header-left, .hero-inner { margin-left: 1.25rem; }
-          .menu-button-wrap { right: 1.25rem; }
+  .menu-button-wrap { right: 3rem; }
         }
 
         @media (max-width: 700px) {
@@ -191,6 +190,7 @@
           .header-row { padding-top: 18px; padding-bottom: 18px; }
           .site-logo-img { height: 160px !important; max-height: 220px; }
           .header-left, .hero-inner { margin-left: 0.75rem; }
+        .menu-button-wrap { right: 2rem; }
           #siteMenuButton { background: rgba(255,255,255,0.6); }
         }
 
@@ -253,11 +253,6 @@
         
         </div>
 
-        <button id="panelCloseBtn" class="p-2 rounded-md text-gray-600 hover:bg-gray-100 focus:outline-none" aria-label="Close menu">
-          <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#374151" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
-        </button>
       </div>
 
       <nav class="px-6 py-6 flex-1 overflow-y-auto">
@@ -289,8 +284,11 @@
       const overlay = document.getElementById('siteOverlay');
       const openIcon = document.getElementById('menuOpenIcon');
       const closeIcon = document.getElementById('menuCloseIcon');
-      const panelClose = document.getElementById('panelCloseBtn');
-      const yearEl = document.getElementById('year');
+const panelClose = document.getElementById('panelCloseBtn');
+...
+if (panelClose) {
+  panelClose.addEventListener('click', closePanel);
+}      const yearEl = document.getElementById('year');
 
       if (yearEl) yearEl.textContent = new Date().getFullYear();
 
